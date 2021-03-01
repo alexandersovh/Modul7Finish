@@ -1,104 +1,157 @@
 ﻿using System;
 
 namespace Modul7Finish
-{       
+{
     class Program
     {
         static void Main(string[] args)
         {
-            Men men = new Men("alex", 12, "Yyroclavka");
+            ///// Men
+            //Console.Write("ввдите имя: ");
+            //string name = Console.ReadLine();
+
+            //Console.Write("ввдите возраст: ");
+            //int age = int.Parse(Console.ReadLine());
+
+            //Console.Write("ввдите адрес: ");
+            //string addressMen = Console.ReadLine();
+
+            /////Order
+            //int idOrder;
+            //string nameOrder;
+            //Console.Write("ввдите Id: ");
+            //idOrder = int.Parse(Console.ReadLine());
+
+            //Console.Write("или название товара: ");
+            //nameOrder = Console.ReadLine();
+
+            //Console.WriteLine("можете взять товар но адресу {0}", addressMen);
+
+            /// Men
+
+            //Men mene = new Men("asdfg", 12, "156486");
+
+            //Console.WriteLine("nad {0}", mene.name);
+            //Console.WriteLine("nad {0}", mene.age);
+            //Console.WriteLine("nad {0}", mene.addressMen);
+
+            HomeDelivery homeDelivery = new HomeDelivery("6847");
+
             Console.ReadLine();
         }
     }
-    class Men
-    {
-        public static string name;
-        public static int age;
-        public static string addressMen;
+    //class Men
+    //{
+    //    public string name;
+    //    public int age;
+    //    public string addressMen;
 
-        public Men() 
+    //    public Men()
+    //    {
+    //        Console.WriteLine("No data");
+    //    }
+    //    public Men(string name)
+    //    {
+    //        this.name = name;
+    //    }
+    //    public Men(string name, int age) : this(name)
+    //    {
+    //        //this.name = name;
+    //        this.age = age;
+    //    }
+    //    public Men(string name, int age, string addressMen) : this(name,age)
+    //    {
+    //        //this.name = name;
+    //        //this.age = age;
+    //        this.addressMen = addressMen;
+    //    }
+    //    public void CheckYears()
+    //    {
+    //        int age;
+    //        bool cycle = default;
+
+    //        while (cycle != true)
+    //        {
+    //            age = int.Parse(Console.ReadLine());
+    //            if ((age < 18))
+    //            {
+    //                cycle = false; string s = "нужно больше 18 лет";
+    //                Console.WriteLine(s);
+    //            }
+    //            else
+    //            {
+    //                cycle = true;
+    //                this.age = age;
+    //            }
+    //        }
+    //    }
+    //    public void EnterData()
+    //    {
+    //        string name = Console.ReadLine();
+    //        int age = int.Parse(Console.ReadLine());
+    //        CheckYears();
+    //        string addressMen = Console.ReadLine();
+
+    //    }
+
+    //}
+    abstract class Delivery
+    {
+        public string address;
+
+        public Delivery()
         {
-            Console.WriteLine("No data");
+            
         }
-        public Men(string name) 
-        { 
-            Console.WriteLine(name);
-            ManSet(name);
-        }
-        public Men(string name, int age) 
-        { 
-            Console.WriteLine(name);
-            Console.WriteLine(age);
-            ManSet(name, age);
-        }
-        public Men(string name, int age, string addressMen) 
+        public Delivery(string address)
         {
-            Console.WriteLine(name);
-            Console.WriteLine(age);
-            Console.WriteLine(addressMen);
-            MenSet(name, age, addressMen);
+            this.address = address;
         }
-        public static void MenSet(string nameS)
+        public abstract void Deliverytoo();
+    }
+    class HomeDelivery : Delivery
+    {
+        public HomeDelivery()
         {
-            name = nameS;
+            this.address = "no address";
+            Console.WriteLine(this.address);
         }
-        public static void MenSet(string nameS, int ageS)
+
+        public HomeDelivery(string address) : base(address)
         {
-            name = nameS;
-            age = ageS;
+            this.address = address;
+            Deliverytoo();
         }
-        public static void MenSet(string nameS, int ageS, string addressMeS)
+
+
+        public override void Deliverytoo()
         {
-            name = nameS;
-            age = ageS;
-            addressMen = addressMeS;
+            Console.WriteLine("доствавка домой на адрес {0}", address);
         }
     }
-    //abstract class Delivery
-    //{
-    //    public string Address;
+    class PickpointDelivery : Delivery
+    {
+        public override void Deliverytoo()
+        {
+            Console.WriteLine("доствавка в пункт выдочи на адрес{0}");
+        }
+    }
+    class ShopDelivery : Delivery
+    {
+        public override void Deliverytoo()
+        {
+            Console.WriteLine("доствавка в магазин на адрес{0}", address);
+        }
+    }
+    class Order<Tdelivery, Tstruct> where Tdelivery : Delivery
+    {
+        public Tdelivery delivery;
+        public int number;
+        public string description;
 
-    //    public Delivery()
-    //    {
-
-    //    }
-    //    public Delivery(string Address)
-    //    {
-    //        this.Address = Address;
-    //    }
-    //    public abstract void DeliveryToo();
-    //}
-    //class HomeDelivery : Delivery
-    //{
-    //    public override void DeliveryToo()
-    //    {
-    //        Console.WriteLine("доствавка домой на адрес{0}", Men.addressMen);
-    //    }
-    //}
-    //class PickPointDelivery : Delivery
-    //{
-    //    public override void DeliveryToo()
-    //    {
-    //        Console.WriteLine("доствавка в пункт выдочи на адрес{0}", Address);
-    //    }
-    //}
-    //class ShopDelivery : Delivery
-    //{
-    //    public override void DeliveryToo()
-    //    {
-    //        Console.WriteLine("доствавка в магазин на адрес{0}", Address);
-    //    }
-    //}
-    //class Order<TDelivery, TStruct> where TDelivery : Delivery
-    //{
-    //    public TDelivery Delivery;
-    //    public int Number;
-    //    public string Description;
-
-    //    public void DisplayAddress()
-    //    {
-    //        Console.WriteLine(Delivery.Address);
-    //    }
-    //}
-
+        public void displayaddress()
+        {
+            //Console.WriteLine(delivery.address);
+        }
+    }
 }

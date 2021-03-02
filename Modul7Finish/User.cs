@@ -12,7 +12,6 @@ namespace Modul7Finish
         public string Name { get; private set; }
         public string Adress { get; private set; }
         public double Balance { get; private set; }
-        //public double Spent { get; private set; }
         public int Age { get; private set; }
 
         /// <summary>
@@ -35,13 +34,28 @@ namespace Modul7Finish
 
         public User(string name, string adress, int balance, int age)
         {
-
             Name = name;
             Adress = adress;
             Balance = balance;
             Age = age;
-
         }
+        public static void DataUser()
+        {
+            Console.Write("Здравствуйте {0} ваши данные: \n\t{1} \n\t{2} \n\t{3}",
+                   Name,
+                   Adress,
+                   Balance,
+                   Name);
+        }
+        public static void DataUser(int resalt)
+        {
+            Console.Write("Здравствуйте {0} ваши данные: \n\t{1} \n\t{2} \n\t{3}",
+                   UserData.UserArray[resalt - 1].Name,
+                   UserData.UserArray[resalt - 1].Adress,
+                   UserData.UserArray[resalt - 1].Balance,
+                   UserData.UserArray[resalt - 1].Age);
+        }
+
         /// <summary>
         /// проверка возроста
         /// </summary>
@@ -69,16 +83,18 @@ namespace Modul7Finish
             return this.Age;
         }
     }
-    class UserData
+    static class UserData
     {
-        public User[] UserDataSet()
+        public static User[] UserArray;
+        public static User[] UserDataSet()
         {
-            User[] DataArray;
-            DataArray[1] = new User("Никола", "улица 1Мая, дом 5", 1506, 19);
-            DataArray[] = new User("Павел", "3-я улица Строителей, дом 25", 597, 25);
-            DataArray[1] = new User("Эдвард", "Централ, дом 11", 3000, 100);
+            User[] DataArray = new User[3];
 
-             
+            DataArray[0] = new User("Никола", "улица 1 Мая, дом 5", 1506, 19);
+            DataArray[1] = new User("Павел", "3-я улица Строителей, дом 25", 597, 25);
+            DataArray[2] = new User("Эдвард", "Централ, дом 11", 3000, 100);
+
+            UserArray = DataArray;
 
             return DataArray;
         }

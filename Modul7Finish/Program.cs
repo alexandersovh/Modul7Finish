@@ -6,8 +6,9 @@ namespace Modul7Finish
     {
         static void Main(string[] args)
         {
-            User user = new User();
-
+            //User user = new User();
+            Order order = new Order();
+            order.UserCall();
             Console.ReadLine();
         }
     }

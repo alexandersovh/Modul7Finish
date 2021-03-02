@@ -22,19 +22,18 @@ namespace Modul7Finish
         /// </summary>
         public HomeDelivery()
         {
-            InQueriAddress();
-            Deliverytoo();
+
         }
         /// <summary>
         /// методы
         /// </summary>
-        public override void InQueriAddress()
-        {
-            Console.WriteLine("укажите свой домашний адркс");
-            //User.Adress();
-            //string address = Console.ReadLine();
-            //this.address = address;
-        }
+        //public override void InQueriAddress()
+        //{
+        //    Console.WriteLine("укажите свой домашний адркс");
+        //    //User.Adress();
+        //    //string address = Console.ReadLine();
+        //    //this.address = address;
+        //}
 
         public override void Deliverytoo()
         {

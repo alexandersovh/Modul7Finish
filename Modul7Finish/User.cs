@@ -39,13 +39,13 @@ namespace Modul7Finish
             Balance = balance;
             Age = age;
         }
-        public static void DataUser()
+        public void DataUser()
         {
             Console.Write("Здравствуйте {0} ваши данные: \n\t{1} \n\t{2} \n\t{3}",
                    Name,
                    Adress,
                    Balance,
-                   Name);
+                   Age);
         }
         public static void DataUser(int resalt)
         {

@@ -22,26 +22,24 @@ namespace Modul7Finish
 
             Console.WriteLine("здравствуйте вы впервые в магазине (введите да/нет)");
             string q = Console.ReadLine();
-            if (q == "да")
-            {
-                user = new User();
-                User.DataUser();
-            }
-            else
+            if (q == "нет")
             {
                 for (int i = 0; i < UserData.UserDataSet().Length; i++)
                 {
-                    
-                    string ist = Convert.ToString(i+1);
-                    Console.WriteLine(ist+ ") " + UserData.UserArray[i].Name);
+
+                    string ist = Convert.ToString(i + 1);
+                    Console.WriteLine(ist + ") " + UserData.UserArray[i].Name);
                 }
                 int ires;
                 Console.Write("укажите ваше № вашего имени: ");
                 ires = int.Parse(Console.ReadLine());
 
                 User.DataUser(ires);
-
-
+            }
+            else
+            {
+                user = new User();
+                user.DataUser();
             }
 
         }

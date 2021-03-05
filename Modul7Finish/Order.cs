@@ -18,30 +18,35 @@ namespace Modul7Finish
     {
         public void UserCall()
         {
+            var arrUser = UserData.UserDataSet();
+
+            UserCollection userCollection = new UserCollection(arrUser);
+
             User user;
 
             Console.WriteLine("здравствуйте вы впервые в магазине (введите да/нет)");
             string q = Console.ReadLine();
             if (q == "нет")
             {
-                for (int i = 0; i < UserData.UserDataSet().Length; i++)
+                for (int i = 0; i < arrUser.Length; i++)
                 {
-
-                    string ist = Convert.ToString(i + 1);
-                    Console.WriteLine(ist + ") " + UserData.UserArray[i].Name);
+                    user = userCollection[i];
+                    Console.WriteLine($"{i + 1}) {user.Name}, {user.Adress}, {user.Balance},{user.Age}");
                 }
                 int ires;
                 Console.Write("укажите ваше № вашего имени: ");
+
                 ires = int.Parse(Console.ReadLine());
 
-                User.DataUser(ires);
+                user = userCollection[ires - 1];
+                Console.Write($"Это ваши данные: {user.Name}, \n\t\t{user.Adress}, \n\t\t{user.Balance}, \n\t\t{user.Age}");
             }
             else
             {
-                user = new User();
-                user.DataUser();
-            }
+                UserWrite userWrite = new UserWrite();
+                Console.Write($"Это ваши данные: {userWrite.Name}, \n\t\t{userWrite.Adress}, \n\t\t{userWrite.Balance}, \n\t\t{userWrite.Age}");
 
+            }
         }
         public void DeliviriCall(string a)
         {
@@ -60,5 +65,4 @@ namespace Modul7Finish
             }
         }
     }
-
 }

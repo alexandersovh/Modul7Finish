@@ -1,7 +1,8 @@
 {
   "profiles": {
     "Modul7Finish": {
-      "commandName": "Project",
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\alexandr\\Desktop\\trening\\SkillFactory\\Modul7Finish\\Modul7Finish\\bin\\Debug\\netcoreapp3.1\\Modul7Finish.exe",
       "remoteDebugEnabled": false
     }
   }

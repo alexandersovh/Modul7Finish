@@ -6,18 +6,21 @@ namespace Modul7Finish
 {
     class User
     {
+        public string Name { get; set; }
+        public string Adress { get; set; }
+        public double Balance { get; set; }
+        public int Age { get; set; }
+
+    }
+    class UserWrite : User
+    {
         /// <summary>
         /// св-ва
         /// </summary>
-        public string Name { get; private set; }
-        public string Adress { get; private set; }
-        public double Balance { get; private set; }
-        public int Age { get; private set; }
-
         /// <summary>
         /// конструсторы
         /// </summary>
-        public User()
+        public UserWrite()
         {
             Console.Write("введите Имя: ");
             Name = Console.ReadLine();
@@ -29,33 +32,16 @@ namespace Modul7Finish
             Balance = double.Parse(Console.ReadLine());
 
             Console.Write("введите возраст: ");
-            Age = this.CheckYears();
+            Age = CheckYears();
         }
-
-        public User(string name, string adress, int balance, int age)
+        public UserWrite(string name, string adress, int balance, int age)
         {
             Name = name;
             Adress = adress;
             Balance = balance;
             Age = age;
+            //var arrayUser = UserData.UserDataSet();
         }
-        public void DataUser()
-        {
-            Console.Write("Здравствуйте {0} ваши данные: \n\t{1} \n\t{2} \n\t{3}",
-                   Name,
-                   Adress,
-                   Balance,
-                   Age);
-        }
-        public static void DataUser(int resalt)
-        {
-            Console.Write("Здравствуйте {0} ваши данные: \n\t{1} \n\t{2} \n\t{3}",
-                   UserData.UserArray[resalt - 1].Name,
-                   UserData.UserArray[resalt - 1].Adress,
-                   UserData.UserArray[resalt - 1].Balance,
-                   UserData.UserArray[resalt - 1].Age);
-        }
-
         /// <summary>
         /// проверка возроста
         /// </summary>
@@ -72,7 +58,6 @@ namespace Modul7Finish
                 {
                     cycle = false; string s = "Вам не хватает лет, нужно бльше 18";
                     Console.WriteLine(s);
-
                 }
                 else
                 {
@@ -83,20 +68,68 @@ namespace Modul7Finish
             return this.Age;
         }
     }
+    /// <summary>
+    /// индексация
+    /// </summary>
+    class UserCollection
+    {
+        private User[] users;
+        public UserCollection(User[] users)
+        {
+            this.users = users;
+        }
+        public User this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < users.Length)
+                {
+                    return users[index];
+                }
+                return null;
+            }
+            set
+            {
+                if (index >= 0 && index < users.Length)
+                {
+                    users[index] = value;
+                }
+            }
+        }
+    }
     static class UserData
     {
-        public static User[] UserArray;
+        /// <summary>
+        /// здесь массив с людьм
+        /// </summary>
+        /// <returns></returns>
         public static User[] UserDataSet()
         {
-            User[] DataArray = new User[3];
-
-            DataArray[0] = new User("Никола", "улица 1 Мая, дом 5", 1506, 19);
-            DataArray[1] = new User("Павел", "3-я улица Строителей, дом 25", 597, 25);
-            DataArray[2] = new User("Эдвард", "Централ, дом 11", 3000, 100);
-
-            UserArray = DataArray;
-
-            return DataArray;
+            var DataUserGet = new User[]
+            {
+                new User
+                {
+                   Name = "Никола",
+                   Adress = "улица 1 Мая дом 5",
+                   Balance = 1506,
+                   Age = 19
+                },
+                new User
+                {
+                   Name = "Павел",
+                   Adress = "3-я улица Строителей, дом 25",
+                   Balance = 597,
+                   Age = 25
+                },
+                new User
+                {
+                   Name = "Эдвард",
+                   Adress = "Централ, дом 11",
+                   Balance = 3000,
+                   Age = 100
+                }
+            };
+            return DataUserGet;
         }
     }
 }

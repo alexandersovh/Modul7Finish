@@ -14,9 +14,9 @@ namespace Modul7Finish
     //    {
             
     //    }
-    class Order 
+    class Order <T>
     {
-        public void UserCall()
+        public static void UserCall()
         {
             var arrUser = UserData.UserDataSet();
 
@@ -48,6 +48,22 @@ namespace Modul7Finish
 
             }
         }
+        public static void ProductB()
+        {
+
+            Branhcing;
+
+            ProductCollection<Game> game = new ProductCollection<Game>(GArray);
+            ProductCollection<Matherbord> matherbord = new ProductCollection<Matherbord>(Marray);
+            ProductCollection<CPU> cpu = new ProductCollection<CPU>(CPUarray);
+            ProductCollection<GPU> gpu = new ProductCollection<GPU>(GPUarray);
+            ProductCollection<PowerSupply> powerSupply = new ProductCollection<PowerSupply>(PSMarray);
+            ProductCollection<Laptops> mather = new ProductCollection<Laptops>(Larray);
+
+            
+
+        }
+
 
         public void DeliviriCall(string a)
         {

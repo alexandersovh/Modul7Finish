@@ -10,6 +10,7 @@ namespace Modul7Finish
         public string Name { get; set; }
         public double Prise { get; set; }
         public string Monufacturer { get; set; }
+        //public abstract void Сharacteristic();
         public virtual double Discount()
         {
             return Prise;
@@ -21,6 +22,11 @@ namespace Modul7Finish
         /// добовляем возрастной ценз
         /// </summary>
         public int AgeRating { get; set; }
+        public Game()
+        {
+            Console.WriteLine($" Id:{this.Id}, \n Name: {this.Name}, \n Prise: {this.Prise},\n Monufacturer: " +
+                   $"{this.Monufacturer},\n AgeRating: {this.AgeRating},\n:^)");
+        }
         public override double Discount()
         {
             return Prise * 0.2;
@@ -29,9 +35,8 @@ namespace Modul7Finish
     /// <summary>
     /// прочее железо
     /// </summary>
-    class Hardware : Product
+    abstract class Hardware : Product
     {
-
         public override double Discount()
         {
             return Prise * 0.5;
@@ -42,8 +47,14 @@ namespace Modul7Finish
     /// </summary>
     class Matherbord : Hardware
     {
-        public string Chipset { get; set; }
+        public string Socet { get; set; }
         public string FormFactor { get; set; }
+        public Matherbord()
+        {
+            Console.WriteLine($" Id:{this.Id}, \n Name: {this.Name}, \n Prise: {this.Prise},\n Monufacturer: " +
+                   $"{this.Monufacturer},\n Socet: {this.Socet},\n FormFactor: {this.FormFactor},\n :^)");
+        }
+
 
     }
     /// <summary>
@@ -52,8 +63,12 @@ namespace Modul7Finish
     class CPU : Hardware
     {
         public string Chipset { get; set; }
-
         public int CPUFrequency { get; set; }
+        public CPU()
+        {
+            Console.WriteLine($" Id:{this.Id}, \n Name: {this.Name}, \n Prise: {this.Prise},\n Monufacturer: " +
+                   $"{this.Monufacturer},\n Chipset: {this.Chipset},\n CPUFrequency: {this.CPUFrequency},\n:^)");
+        }
     }
     /// <summary>
     /// видюха
@@ -63,9 +78,13 @@ namespace Modul7Finish
         public int VidioMemory { get; set; }
         public override double Discount()
         {
-            return Prise * 1000;
+            return Prise * 2;
         }
-
+        public GPU()
+        {
+            Console.WriteLine($" Id:{this.Id}, \n Name: {this.Name}, \n Prise: {this.Prise},\n Monufacturer: " +
+                   $"{this.Monufacturer},\n VidioMemory: {this.VidioMemory},\n:^)");
+        }
 
     }
     /// <summary>
@@ -74,6 +93,11 @@ namespace Modul7Finish
     class PowerSupply : Hardware
     {
         public int Power { get; set; }
+        public PowerSupply()
+        {
+            Console.WriteLine($" Id:{this.Id}, \n Name: {this.Name}, \n Prise: {this.Prise},\n Monufacturer: " +
+                   $"{this.Monufacturer},\n Power: {this.Power},\n:^)");
+        }
     }
     /// <summary>
     /// ноутбуки
@@ -88,6 +112,11 @@ namespace Modul7Finish
         /// емкость батареи
         /// </summary>
         public double VolumeBattery { get; set; }
+        public Laptops()
+        {
+            Console.WriteLine($" Id:{this.Id}, \n Name: {this.Name}, \n Prise: {this.Prise},\n Monufacturer: " +
+                   $"{this.Monufacturer},\n Weight: {this.Weight},\n VolumeBattery: {this.VolumeBattery},\n:^)");
+        }
     }
     class ProductCollection<T>
     {
@@ -117,297 +146,193 @@ namespace Modul7Finish
         }
 
     }
+    /// <summary>
+    /// несколько методов с массивом соответствующие типу продукта
+    /// </summary>
     static class ProductData
     {
         /// <summary>
-        /// здесь массив с людьм
+        /// здесь массив с таварами
         /// </summary>
         /// <returns></returns>
         public static Game[] GametDataBase()
         {
-            var ArrayProduct0 = new Game[]
+            var gameArr = new Game[]
             {
-                    new Game
-                    {
-                        Id = 1,
-                        Name = "PlayerUnknown’s Battlegrounds",
-                        Prise = 1400,
-                        Monufacturer = "Microsoft",
-                        AgeRating = 18
-                    },
-                    new Game
-                    {
-                        Id = 2,
-                        Name = "PlayerUnknown’s Battlegrounds",
-                        Prise = 1400,
-                        Monufacturer = "Microsoft",
-                        AgeRating = 18
-                    },
-                    new Game
-                    {
-                        Id = 3,
-                        Name = "PlayerUnknown’s Battlegrounds",
-                        Prise = 1400,
-                        Monufacturer = "Microsoft",
-                        AgeRating = 18
-                    },
-                    new Game
-                    {
-                        Id = 14,
-                        Name = "PlayerUnknown’s Battlegrounds",
-                        Prise = 1400,
-                        Monufacturer = "Microsoft",
-                        AgeRating = 18
-                    }
+                new Game
+                {
+                    Id = 10,
+                    Name = "PlayerUnknown’s Battlegrounds",
+                    Prise = 1400,
+                    Monufacturer = "Microsoft",
+                    AgeRating = 18
+                }
             };
-            return ArrayProduct0;
+            return gameArr;
         }
         public static Matherbord[] MatherbordDataBase()
         {
-            var ArrayProduct1 = new Matherbord[]
-        {
-                    new Matherbord
-                    {
-                        Id = 21,
-                        Name = "Материнская плата GIGABYTE GA-B250 - FinTech",
-                        Prise = 15440,
-                        Monufacturer = "GIGABYTE",
-                        Chipset = "LGA1151",
-                        FormFactor = "ATX"
-                    },
-                    new Matherbord
-                     {
-                        Id = 22,
-                        Name = "Материнская плата GIGABYTE GA-B250 - FinTech",
-                        Prise = 15440,
-                        Monufacturer = "GIGABYTE",
-                        Chipset = "LGA1151",
-                        FormFactor = "ATX"
-                    },
-                     new Matherbord
-                      {
-                        Id = 23,
-                        Name = "Материнская плата GIGABYTE GA-B250 - FinTech",
-                        Prise = 15440,
-                        Monufacturer = "GIGABYTE",
-                        Chipset = "LGA1151",
-                        FormFactor = "ATX"
-                    },
-                      new Matherbord
-                       {
-                        Id = 24,
-                        Name = "Материнская плата GIGABYTE GA-B250 - FinTech",
-                        Prise = 15440,
-                        Monufacturer = "GIGABYTE",
-                        Chipset = "LGA1151",
-                        FormFactor = "ATX"
-                    }
-        };
-            return ArrayProduct1;
+            var matherbordArr = new Matherbord[]
+            {
+                 new Matherbord
+                 {
+                    Id = 20,
+                    Name = "Материнская плата GIGABYTE GA-B250 - FinTech",
+                    Prise = 15440,
+                    Monufacturer = "GIGABYTE",
+                    Socet = "LGA1151",
+                    FormFactor = "ATX"
+                 }
+            };
+            return matherbordArr;
         }
         public static CPU[] CPUDataBase()
         {
-            var ArrayProduct2 = new CPU[]
+            var CPUArr = new CPU[]
             {
-                    new CPU
-                    {
-                        Id = 30,
-                        Name = "Intel Core i7 Bloomfield",
-                        Prise = 5500,
-                        Monufacturer = "Intel",
-                        CPUFrequency =  2667,
-                        Chipset = " LGA1366"
-                    },
-                    new CPU
-                    {
-                        Id = 31,
-                        Name = "Intel Core i7 Bloomfield",
-                        Prise = 5500,
-                        Monufacturer = "Intel",
-                        CPUFrequency =  2667,
-                        Chipset = " LGA1366"
-                    },
-                    new CPU
-                    {
-                        Id = 32,
-                        Name = "Intel Core i7 Bloomfield",
-                        Prise = 5500,
-                        Monufacturer = "Intel",
-                        CPUFrequency =  2667,
-                        Chipset = " LGA1366"
-                    }
+                new CPU
+                {
+                    Id = 30,
+                    Name = "Intel Core i7 Bloomfield",
+                    Prise = 5500,
+                    Monufacturer = "Intel",
+                    CPUFrequency =  2667,
+                    Chipset = " LGA1366"
+                }
                    };
-            return ArrayProduct2;
+            return CPUArr;
         }
         public static GPU[] GPUDataBase()
         {
-            var ArrayProduct3 = new GPU[]
+            var GPUArr = new GPU[]
             {
-                    new GPU
-                    {
-                        Id = 41,
-                        Name = "MSI Radeon RX 5500 XT Mech 8G OC",
-                        Prise = 50419,
-                        Monufacturer = "MSI",
-                        VidioMemory = 8192
-                    },
-                    new GPU
-                    {
-                        Id = 42,
-                        Name = "MSI Radeon RX 5500 XT Mech 8G OC",
-                        Prise = 50419,
-                        Monufacturer = "MSI",
-                        VidioMemory = 8192
-                    },
-                    new GPU
-                    {
-                        Id = 43,
-                        Name = "MSI Radeon RX 5500 XT Mech 8G OC",
-                        Prise = 50419,
-                        Monufacturer = "MSI",
-                        VidioMemory = 8192
-                    }
+                new GPU
+                {
+                    Id = 40,
+                    Name = "MSI Radeon RX 5500 XT Mech 8G OC",
+                    Prise = 50419,
+                    Monufacturer = "MSI",
+                    VidioMemory = 8192
+                }
                    };
-            return ArrayProduct3;
+            return GPUArr;
         }
         public static PowerSupply[] PowerSupplyDataBase()
         {
-            var ArrayProduct4 = new PowerSupply[]
+            var powerSupplyArr = new PowerSupply[]
             {
-                    new PowerSupply
+                new PowerSupply
                     {
-                        Id = 51,
-                        Name = "Cooler Master MasterWatt Lite 230V 500W",
-                        Prise = 3900,
-                        Monufacturer = "Cooler Master",
-                        Power =  500
-                    },
-                      new PowerSupply
-                    {
-                        Id = 52,
-                        Name = "Cooler Master MasterWatt Lite 230V 500W",
-                        Prise = 3900,
-                        Monufacturer = "Cooler Master",
-                        Power =  500
-                    },
-                        new PowerSupply
-                    {
-                        Id = 53,
-                        Name = "Cooler Master MasterWatt Lite 230V 500W",
-                        Prise = 3900,
-                        Monufacturer = "Cooler Master",
-                        Power =  500
-                    },
-                          new PowerSupply
-                    {
-                        Id = 54,
-                        Name = "Cooler Master MasterWatt Lite 230V 500W",
-                        Prise = 3900,
-                        Monufacturer = "Cooler Master",
-                        Power =  500
-                    },
-                            new PowerSupply
-                    {
-                        Id = 55,
+                        Id = 50,
                         Name = "Cooler Master MasterWatt Lite 230V 500W",
                         Prise = 3900,
                         Monufacturer = "Cooler Master",
                         Power =  500
                     }
-                   };
-            return ArrayProduct4;
+            };
+            return powerSupplyArr;
         }
         public static Laptops[] LaptopsDataBase()
         {
-            var ArrayProduct5 = new Laptops[]
+            var laptopsArr = new Laptops[]
             {
-                    new Laptops
-                    {
-                        Id = 74,
-                        Name = "Acer ASPIRE 3 A315-22",
-                        Prise = 29500,
-                        Monufacturer = "Acer",
-                        Weight = 1.94,
-                        VolumeBattery = 4810,
-                    },
-                    new Laptops
-                    {
-                        Id = 71,
-                        Name = "Acer ASPIRE 3 A315-22",
-                        Prise = 29500,
-                        Monufacturer = "Acer",
-                        Weight = 1.94,
-                        VolumeBattery = 4810,
-                    },
-                    new Laptops
-                    {
-                        Id = 72,
-                        Name = "Acer ASPIRE 3 A315-22",
-                        Prise = 29500,
-                        Monufacturer = "Acer",
-                        Weight = 1.94,
-                        VolumeBattery = 4810,
-                    },
-                    new Laptops
-                    {
-                        Id = 73,
-                        Name = "Acer ASPIRE 3 A315-22",
-                        Prise = 29500,
-                        Monufacturer = "Acer",
-                        Weight = 1.94,
-                        VolumeBattery = 4810,
-                    },
-                    new Laptops
-                    {
-                        Id = 75,
-                        Name = "Acer ASPIRE 3 A315-22",
-                        Prise = 29500,
-                        Monufacturer = "Acer",
-                        Weight = 1.94,
-                        VolumeBattery = 4810,
-                    },
-                    new Laptops
-                    {
-                        Id = 76,
-                        Name = "Acer ASPIRE 3 A315-22",
-                        Prise = 29500,
-                        Monufacturer = "Acer",
-                        Weight = 1.94,
-                        VolumeBattery = 4810,
-                    }
+                new Laptops
+                {
+                    Id = 60,
+                    Name = "Acer ASPIRE 3 A315-22",
+                    Prise = 29500,
+                    Monufacturer = "Acer",
+                    Weight = 1.94,
+                    VolumeBattery = 4810,
+                }
             };
-            return ArrayProduct5;
+            return laptopsArr;
         }
+        //public Product[] ProductBranhcing<U>(U array)
+        //{ 
+        //string[] a = default;
 
-            //string a = Console.ReadLine();
+        //    switch (array)
+        //    {
+        //        case "игры":
+        //            return GametDataBase();
+        //            break;
+        //        case "материнские платы":
+        //            return MatherbordDataBase();
+        //            break;
+        //        case "CPU":
+        //            return CPUDataBase();
+        //            break;
+        //        case "GPU":
+        //            return GPUDataBase();
+        //            break;
+        //        case "блок питания":
+        //            return PowerSupplyDataBase();
+        //            break;
+        //        case "ноутбуки":
+        //            return LaptopsDataBase();
+        //            break;
+        //        default:
+        //            return  null;
+        //            break;
+        //    }
+        //}
+    }
+    static class Branhcing <T>
+    {
+        public static Product[] ProductBranhcing<U>(U array)
+        {
 
-            //switch (a)
-            //{
-            //    case "Game":
-            //        return ArrayProduct0;
-            //        break;
-            //    case "Matherbord":
-            //        return ArrayProduct1;
-            //        break;
-            //    case "CPU":
-            //        return ArrayProduct2;
-            //        break;
-            //    case "GPU":
-            //        return ArrayProduct3;
-            //        break;
-            //    case "PowerSupply":
-            //        return ArrayProduct4;
-            //        break;
-            //    case "Laptops":
-            //        return ArrayProduct5;
-            //        break;
-            //    default:
-            //        return ArrayProduct0;
-            //        break;
-            //}
+            switch (array)
+            {
+                case "игры":
+                    return ProductData.GametDataBase();
+                    break;
+                case "материнские платы":
+                    return ProductData.MatherbordDataBase();
+                    break;
+                case "CPU":
+                    return ProductData.CPUDataBase();
+                    break;
+                case "GPU":
+                    return ProductData.GPUDataBase();
+                    break;
+                case "блок питания":
+                    return ProductData.PowerSupplyDataBase();
+                    break;
+                case "ноутбуки":
+                    return ProductData.LaptopsDataBase();
+                    break;
+                default:
+                    return null;
+                    break;
+            }
+            switch (array)
+            {
+                case 1:
+                    return ProductData.GametDataBase();
+                    break;
+                case 2:
+                    return ProductData.MatherbordDataBase();
+                    break;
+                case 3:
+                    return ProductData.CPUDataBase();
+                    break;
+                case 4:
+                    return ProductData.GPUDataBase();
+                    break;
+                case 5:
+                    return ProductData.PowerSupplyDataBase();
+                    break;
+                case 6:
+                    return ProductData.LaptopsDataBase();
+                    break;https://www.youtube.com/watch?v=Qm5QPJbUmm0
+                default:
+                    return null;
+                    break;
+            }
 
-        
-        
-        
+        }
+                    
     }
 }

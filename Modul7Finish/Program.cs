@@ -12,18 +12,24 @@ namespace Modul7Finish
             ////hardware.
             //order.UserCall();
             var PGArray = ProductData.GametDataBase();
-            
+            var Marray = ProductData.MatherbordDataBase();
+            var CPUarray = ProductData.CPUDataBase();
+            var GPUarray = ProductData.GPUDataBase();
+            var PSMarray = ProductData.PowerSupplyDataBase();
+            var Larray = ProductData.LaptopsDataBase();
+
+
 
             ProductCollection<Game> PG = new ProductCollection<Game>(PGArray);
+            ProductCollection<Matherbord> mather = new ProductCollection<Matherbord>(Marray);
 
-            for(int i = 0; i < PGArray.Length; i++ )
-            {
-                Game game = PG[i];
-                Console.WriteLine($" {i + 1}) {game.Id}, {game.Name}, {game.Prise}, {game.Monufacturer}, {game.AgeRating} :^)");
-                Console.WriteLine(game.Id.GetHashCode());
-            }
+            Game game = new Game();
+
+            
+
+            Console.WriteLine(game.Id);
+
             Console.ReadLine();
         }
     }
-
 }

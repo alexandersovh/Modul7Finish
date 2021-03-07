@@ -14,7 +14,7 @@ namespace Modul7Finish
     //    {
             
     //    }
-    class Order <T>
+    class Order
     {
         public static void UserCall()
         {
@@ -22,7 +22,7 @@ namespace Modul7Finish
 
             UserCollection userCollection = new UserCollection(arrUser);
 
-            User user;
+            UserData userData;
 
             Console.WriteLine("здравствуйте вы впервые в магазине (введите да/нет)");
             string q = Console.ReadLine();
@@ -30,41 +30,35 @@ namespace Modul7Finish
             {
                 for (int i = 0; i < arrUser.Length; i++)
                 {
-                    user = userCollection[i];
-                    Console.WriteLine($"{i + 1}) {user.Name}, {user.Adress}, {user.Balance},{user.Age}");
+                    userData = userCollection[i];
+                    UserData userData1 = new UserData();
+                    userData1.UserSetData(i);
                 }
                 int ires;
                 Console.Write("укажите ваше № вашего имени: ");
 
                 ires = int.Parse(Console.ReadLine());
 
-                user = userCollection[ires - 1];
-                Console.Write($"Это ваши данные: {user.Name}, \n\t\t{user.Adress}, \n\t\t{user.Balance}, \n\t\t{user.Age}");
+                userData = userCollection[ires - 1];
+                userData = new UserData();
             }
             else
             {
                 UserWrite userWrite = new UserWrite();
-                Console.Write($"Это ваши данные: {userWrite.Name}, \n\t\t{userWrite.Adress}, \n\t\t{userWrite.Balance}, \n\t\t{userWrite.Age}");
-
             }
         }
         public static void ProductB()
         {
 
-            Branhcing;
+            //Branhcing;
 
-            ProductCollection<Game> game = new ProductCollection<Game>(GArray);
-            ProductCollection<Matherbord> matherbord = new ProductCollection<Matherbord>(Marray);
-            ProductCollection<CPU> cpu = new ProductCollection<CPU>(CPUarray);
-            ProductCollection<GPU> gpu = new ProductCollection<GPU>(GPUarray);
-            ProductCollection<PowerSupply> powerSupply = new ProductCollection<PowerSupply>(PSMarray);
-            ProductCollection<Laptops> mather = new ProductCollection<Laptops>(Larray);
-
-            
-
+            //ProductCollection<Game> game = new ProductCollection<Game>(GArray);
+            //ProductCollection<Matherbord> matherbord = new ProductCollection<Matherbord>(Marray);
+            //ProductCollection<CPU> cpu = new ProductCollection<CPU>(CPUarray);
+            //ProductCollection<GPU> gpu = new ProductCollection<GPU>(GPUarray);
+            //ProductCollection<PowerSupply> powerSupply = new ProductCollection<PowerSupply>(PSMarray);
+            //ProductCollection<Laptops> mather = new ProductCollection<Laptops>(Larray);
         }
-
-
         public void DeliviriCall(string a)
         {
             if (a == "home")

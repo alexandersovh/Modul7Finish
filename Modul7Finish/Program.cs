@@ -6,28 +6,22 @@ namespace Modul7Finish
     {
         static void Main(string[] args)
         {
-            //Order order = new Order();
 
+            Order.UserCall();
             //Hardware hardware = new Hardware();
-            ////hardware.
-            //order.UserCall();
-            var PGArray = ProductData.GametDataBase();
-            var Marray = ProductData.MatherbordDataBase();
-            var CPUarray = ProductData.CPUDataBase();
-            var GPUarray = ProductData.GPUDataBase();
-            var PSMarray = ProductData.PowerSupplyDataBase();
-            var Larray = ProductData.LaptopsDataBase();
+            //var PGArray = ProductData.GametDataBase();
+            //var Marray = ProductData.MatherbordDataBase();
+            //var CPUarray = ProductData.CPUDataBase();
+            //var GPUarray = ProductData.GPUDataBase();
+            //var PSMarray = ProductData.PowerSupplyDataBase();
+            //var Larray = ProductData.LaptopsDataBase();
 
+            //ProductCollection<Game> PG = new ProductCollection<Game>(PGArray);
+            //ProductCollection<Matherbord> mather = new ProductCollection<Matherbord>(Marray);
 
+            //Game game = new Game();
 
-            ProductCollection<Game> PG = new ProductCollection<Game>(PGArray);
-            ProductCollection<Matherbord> mather = new ProductCollection<Matherbord>(Marray);
-
-            Game game = new Game();
-
-            
-
-            Console.WriteLine(game.Id);
+            //Console.WriteLine(game.Id);
 
             Console.ReadLine();
         }

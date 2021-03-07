@@ -6,10 +6,10 @@ namespace Modul7Finish
 {
     class User
     {
-        public string Name { get; set; }
-        public string Adress { get; set; }
-        public double Balance { get; set; }
-        public int Age { get; set; }
+        protected string Name { get; set; }
+        protected string Adress { get; set; }
+        protected double Balance { get; set; }
+        protected int Age { get; set; }
 
     }
     class UserWrite : User
@@ -20,7 +20,7 @@ namespace Modul7Finish
         /// <summary>
         /// конструсторы
         /// </summary>
-        public UserWrite()
+        public  UserWrite()
         {
             Console.Write("введите Имя: ");
             Name = Console.ReadLine();
@@ -33,14 +33,16 @@ namespace Modul7Finish
 
             Console.Write("введите возраст: ");
             Age = CheckYears();
+
+            Console.Write($"Это ваши данные: \n{Name}, \n{Adress}, \n{Balance}, \n{Age}");
+
         }
-        public UserWrite(string name, string adress, int balance, int age)
+        public UserWrite(string name, string adress, double balance, int age)
         {
             Name = name;
             Adress = adress;
             Balance = balance;
             Age = age;
-            //var arrayUser = UserData.UserDataSet();
         }
         /// <summary>
         /// проверка возроста
@@ -73,12 +75,12 @@ namespace Modul7Finish
     /// </summary>
     class UserCollection
     {
-        private User[] users;
-        public UserCollection(User[] users)
+        private UserData[] users;
+        public UserCollection(UserData[] users)
         {
             this.users = users;
         }
-        public User this[int index]
+        public UserData this[int index]
         {
             get
             {
@@ -97,31 +99,47 @@ namespace Modul7Finish
             }
         }
     }
-    static class UserData
+    class UserData : User
     {
+        public void UserSetData(int i)
+        {
+            var arrUser = UserData.UserDataSet();
+
+            UserCollection userCollection = new UserCollection(arrUser);
+            UserData userData = new UserData();
+            userData = userCollection[i];
+
+            UserWrite userWrite = new UserWrite(userData.Name, userData.Adress, userData.Balance, userData.Age);
+            //Name = userData.Name;
+            //Adress = userData.Adress;
+            //Balance = userData.Balance;
+            //Age = userData.Age;
+            Console.Write($"Это ваши данные: {i}\n{userData.Name}, \n{userData.Adress}, \n{userData.Balance}, \n{userData.Age}\n");
+           
+        }
         /// <summary>
         /// здесь массив с людьм
         /// </summary>
         /// <returns></returns>
-        public static User[] UserDataSet()
+        public static UserData[] UserDataSet()
         {
-            var DataUserGet = new User[]
+            var DataUserGet = new UserData[]
             {
-                new User
+                new UserData
                 {
                    Name = "Никола",
                    Adress = "улица 1 Мая дом 5",
                    Balance = 1506,
                    Age = 19
                 },
-                new User
+                new UserData
                 {
                    Name = "Павел",
                    Adress = "3-я улица Строителей, дом 25",
                    Balance = 597,
                    Age = 25
                 },
-                new User
+                new UserData
                 {
                    Name = "Эдвард",
                    Adress = "Централ, дом 11",

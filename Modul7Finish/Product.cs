@@ -280,59 +280,58 @@ namespace Modul7Finish
     }
     static class Branhcing <T>
     {
-        public static Product[] ProductBranhcing<U>(U array)
-        {
+        //public static Product[] ProductBranhcing<U>(U array)
+        //{
 
-            switch (array)
-            {
-                case "игры":
-                    return ProductData.GametDataBase();
-                    break;
-                case "материнские платы":
-                    return ProductData.MatherbordDataBase();
-                    break;
-                case "CPU":
-                    return ProductData.CPUDataBase();
-                    break;
-                case "GPU":
-                    return ProductData.GPUDataBase();
-                    break;
-                case "блок питания":
-                    return ProductData.PowerSupplyDataBase();
-                    break;
-                case "ноутбуки":
-                    return ProductData.LaptopsDataBase();
-                    break;
-                default:
-                    return null;
-                    break;
-            }
-            switch (array)
-            {
-                case 1:
-                    return ProductData.GametDataBase();
-                    break;
-                case 2:
-                    return ProductData.MatherbordDataBase();
-                    break;
-                case 3:
-                    return ProductData.CPUDataBase();
-                    break;
-                case 4:
-                    return ProductData.GPUDataBase();
-                    break;
-                case 5:
-                    return ProductData.PowerSupplyDataBase();
-                    break;
-                case 6:
-                    return ProductData.LaptopsDataBase();
-                    break;https://www.youtube.com/watch?v=Qm5QPJbUmm0
-                default:
-                    return null;
-                    break;
-            }
+        //    switch (array)
+        //    {
+        //        case "игры":
+        //            return ProductData.GametDataBase();
+        //            break;
+        //        case "материнские платы":
+        //            return ProductData.MatherbordDataBase();
+        //            break;
+        //        case "CPU":
+        //            return ProductData.CPUDataBase();
+        //            break;
+        //        case "GPU":
+        //            return ProductData.GPUDataBase();
+        //            break;
+        //        case "блок питания":
+        //            return ProductData.PowerSupplyDataBase();
+        //            break;
+        //        case "ноутбуки":
+        //            return ProductData.LaptopsDataBase();
+        //            break;
+        //        default:
+        //            return null;
+        //            break;
+        //    }
+        //    switch (array)
+        //    {
+        //        case 1:
+        //            return ProductData.GametDataBase();
+        //            break;
+        //        case 2:
+        //            return ProductData.MatherbordDataBase();
+        //            break;
+        //        case 3:
+        //            return ProductData.CPUDataBase();
+        //            break;
+        //        case 4:
+        //            return ProductData.GPUDataBase();
+        //            break;
+        //        case 5:
+        //            return ProductData.PowerSupplyDataBase();
+        //            break;
+        //        case 6:
+        //            return ProductData.LaptopsDataBase();
+        //            break:
+        //            return null;
+        //            break;
+        //    }
 
-        }
+        //}
                     
     }
 }

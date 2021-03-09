@@ -10,7 +10,6 @@ namespace Modul7Finish
         protected string Adress { get; set; }
         protected double Balance { get; set; }
         protected int Age { get; set; }
-
     }
     class UserWrite : User
     {
@@ -20,7 +19,7 @@ namespace Modul7Finish
         /// <summary>
         /// конструсторы
         /// </summary>
-        public  UserWrite()
+        public UserWrite()
         {
             Console.Write("введите Имя: ");
             Name = Console.ReadLine();
@@ -32,10 +31,9 @@ namespace Modul7Finish
             Balance = double.Parse(Console.ReadLine());
 
             Console.Write("введите возраст: ");
-            Age = CheckYears();
+            Age = int.Parse(Console.ReadLine());
 
-            Console.Write($"Это ваши данные: \n{Name}, \n{Adress}, \n{Balance}, \n{Age}");
-
+            WriteSet();
         }
         public UserWrite(string name, string adress, double balance, int age)
         {
@@ -44,31 +42,32 @@ namespace Modul7Finish
             Balance = balance;
             Age = age;
         }
-        /// <summary>
-        /// проверка возроста
-        /// </summary>
-        /// <returns></returns>
-        public int CheckYears()
+        public string WriteSet()
         {
-            int age;
-            bool cycle = default;
-
-            while (cycle != true)
-            {
-                age = int.Parse(Console.ReadLine());
-                if ((age < 18))
-                {
-                    cycle = false; string s = "Вам не хватает лет, нужно бльше 18";
-                    Console.WriteLine(s);
-                }
-                else
-                {
-                    cycle = true;
-                    this.Age = age;
-                }
-            }
-            return this.Age;
+            Console.WriteLine($"Это ваши данные: \n{Name}, \n{Adress}, \n{Balance}, \n{Age}");
+            return Name;
         }
+        //public int CheckYears()
+        //{
+        //    int age;
+        //    bool cycle = default;
+
+        //    while (cycle != true)
+        //    {
+        //        age = int.Parse(Console.ReadLine());
+        //        if ((age < 18))
+        //        {
+        //            cycle = false; string s = "Вам не хватает лет, нужно бльше 18";
+        //            Console.WriteLine(s);
+        //        }
+        //        else
+        //        {
+        //            cycle = true;
+        //            this.Age = age;
+        //        }
+        //    }
+        //    return this.Age;
+        //}
     }
     /// <summary>
     /// индексация
@@ -101,8 +100,9 @@ namespace Modul7Finish
     }
     class UserData : User
     {
-        public void UserSetData(int i)
+        public string UserSetData(int i)
         {
+
             var arrUser = UserData.UserDataSet();
 
             UserCollection userCollection = new UserCollection(arrUser);
@@ -110,12 +110,12 @@ namespace Modul7Finish
             userData = userCollection[i];
 
             UserWrite userWrite = new UserWrite(userData.Name, userData.Adress, userData.Balance, userData.Age);
-            //Name = userData.Name;
-            //Adress = userData.Adress;
-            //Balance = userData.Balance;
-            //Age = userData.Age;
-            Console.Write($"Это ваши данные: {i}\n{userData.Name}, \n{userData.Adress}, \n{userData.Balance}, \n{userData.Age}\n");
-           
+            Console.Write($"Это ваши данные: {i + 1}" +
+                $"\n{userData.Name}, " +
+                $"\n{userData.Adress}," +
+                $"\n{userData.Balance}, " +
+                $"\n{userData.Age}\n");
+            return userData.Name;
         }
         /// <summary>
         /// здесь массив с людьм

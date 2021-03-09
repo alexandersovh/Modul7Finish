@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Modul7Finish
 {
@@ -12,11 +10,11 @@ namespace Modul7Finish
 
     //    public void displayaddress()
     //    {
-            
+
     //    }
     class Order
     {
-        public static void UserCall()
+        public static string UserDisplay()
         {
             var arrUser = UserData.UserDataSet();
 
@@ -40,24 +38,97 @@ namespace Modul7Finish
                 ires = int.Parse(Console.ReadLine());
 
                 userData = userCollection[ires - 1];
-                userData = new UserData();
+                UserData userData2 = new UserData();
+                userData2.UserSetData(ires - 1);
+
+                return userData2.UserSetData(ires - 1);
             }
             else
             {
                 UserWrite userWrite = new UserWrite();
+                return userWrite.WriteSet();
             }
+
         }
-        public static void ProductB()
+        public static void DisplayProductAll()
+        {
+            string name;
+            Console.WriteLine("Здравствуйте, {0}, выберете категорию, для продолжния пакупки:", name = UserDisplay());
+            Console.WriteLine();
+            Console.WriteLine("наипишите на русском с мальнькой буквы или укажите номер");
+
+        }
+        public static void СhooseCat<T>(T ch)
         {
 
-            //Branhcing;
 
-            //ProductCollection<Game> game = new ProductCollection<Game>(GArray);
-            //ProductCollection<Matherbord> matherbord = new ProductCollection<Matherbord>(Marray);
-            //ProductCollection<CPU> cpu = new ProductCollection<CPU>(CPUarray);
-            //ProductCollection<GPU> gpu = new ProductCollection<GPU>(GPUarray);
-            //ProductCollection<PowerSupply> powerSupply = new ProductCollection<PowerSupply>(PSMarray);
-            //ProductCollection<Laptops> mather = new ProductCollection<Laptops>(Larray);
+
+            switch (ch)
+            {
+                case "игры":
+                    var ga = GameData.DataBase();
+                    Game game = new Game();
+                    game.DisplayAll(ga);
+                    break;
+                case "материнские платы":
+                    var mData = MatherbordData.DataBase();
+                    Matherbord matherbord = new Matherbord();
+                    matherbord.DisplayAll(mData);
+                    break;
+                case "процессоры":
+                    var cpuData = CPUData.DataBase();
+                    CPU cpu = new CPU();
+                    cpu.DisplayAll(cpuData);
+                    break;
+                case "видеокарты":
+                    var gpuData = GPUData.DataBase();
+                    GPU gpu = new GPU();
+                    gpu.DisplayAll(gpuData);
+                    break;
+                case "блоки питения":
+                    var psData = PowerSupplyData.DataBase();
+                    PowerSupply powerSupply = new PowerSupply();
+                    powerSupply.DisplayAll(psData);
+                    break;
+                case "ноутбуки":
+                    var lData = LaptopsData.DataBase();
+                    Laptops laptops = new Laptops();
+                    laptops.DisplayAll(lData);
+                    break;
+            }
+            switch (ch)
+            {
+                case 1:
+                    var ga = GameData.DataBase();
+                    Game game = new Game();
+                    game.DisplayAll(ga);
+                    break;
+                case 2:
+                    var mData = MatherbordData.DataBase();
+                    Matherbord matherbord = new Matherbord();
+                    matherbord.DisplayAll(mData);
+                    break;
+                case 3:
+                    var cpuData = CPUData.DataBase();
+                    CPU cpu = new CPU();
+                    cpu.DisplayAll(cpuData);
+                    break;
+                case 4:
+                    var gpuData = GPUData.DataBase();
+                    GPU gpu = new GPU();
+                    gpu.DisplayAll(gpuData);
+                    break;
+                case 5:
+                    var psData = PowerSupplyData.DataBase();
+                    PowerSupply powerSupply = new PowerSupply();
+                    powerSupply.DisplayAll(psData);
+                    break;
+                case 6:
+                    var lData = LaptopsData.DataBase();
+                    Laptops laptops = new Laptops();
+                    laptops.DisplayAll(lData);
+                    break;
+            }
         }
         public void DeliviriCall(string a)
         {

@@ -10,6 +10,19 @@ namespace Modul7Finish
         protected string Adress { get; set; }
         protected double Balance { get; set; }
         protected int Age { get; set; }
+
+        public double LogicBuyUser(double prise, double balans)
+        {
+            if (prise <= balans)
+            {
+                return prise - balans;
+            }
+            else
+            {
+                Console.WriteLine("недостаточно средств");
+                return balans;
+            }
+        }
     }
     class UserWrite : User
     {
@@ -42,10 +55,11 @@ namespace Modul7Finish
             Balance = balance;
             Age = age;
         }
-        public string WriteSet()
+        public (string, string, double, int) WriteSet()
         {
             Console.WriteLine($"Это ваши данные: \n{Name}, \n{Adress}, \n{Balance}, \n{Age}");
-            return Name;
+            var dataUser = (Name, Adress, Balance, Age);
+            return dataUser;
         }
         //public int CheckYears()
         //{
@@ -100,7 +114,7 @@ namespace Modul7Finish
     }
     class UserData : User
     {
-        public string UserSetData(int i)
+        public (string, string, double, int) UserSetData(int i)
         {
 
             var arrUser = UserData.UserDataSet();
@@ -108,14 +122,11 @@ namespace Modul7Finish
             UserCollection userCollection = new UserCollection(arrUser);
             UserData userData = new UserData();
             userData = userCollection[i];
-
+            
             UserWrite userWrite = new UserWrite(userData.Name, userData.Adress, userData.Balance, userData.Age);
-            Console.Write($"Это ваши данные: {i + 1}" +
-                $"\n{userData.Name}, " +
-                $"\n{userData.Adress}," +
-                $"\n{userData.Balance}, " +
-                $"\n{userData.Age}\n");
-            return userData.Name;
+            Console.Write($"Это ваши данные: {i + 1} \n{userData.Name},\n{userData.Adress},\n{userData.Balance},\n{userData.Age}\n\n");
+            var dataUser = (userData.Name, userData.Adress, userData.Balance, userData.Age );
+            return dataUser;
         }
         /// <summary>
         /// здесь массив с людьм

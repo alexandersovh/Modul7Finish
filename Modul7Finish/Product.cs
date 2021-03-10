@@ -15,11 +15,23 @@ namespace Modul7Finish
         {
             return Prise;
         }
-        public virtual void Display()
+        public virtual (int, string, double, string) Display()
         {
             Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
                    $"{Monufacturer},\n:^)");
+            var dataUser = (Id, Name, Prise, Monufacturer);
+            return dataUser;
         }
+        public double LogicBuyProd()
+        {
+            return Prise;
+        }
+        abstract public void Read();
+        //{
+        //    Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
+        //                       $"{Monufacturer},\n\n:^)");
+        //}
+
     }
     class Game : Product
     {
@@ -27,26 +39,34 @@ namespace Modul7Finish
         /// добовляем возрастной ценз
         /// </summary>
         protected int AgeRating { get; set; }
-
-        public override void Display()
-        {
-            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
-                   $"{Monufacturer},\n AgeRating: {AgeRating},\n:^)");
-        }
         public override double Discount()
         {
             return Prise * 0.2;
         }
-        public void DisplayAll(Game[] array)
+        public int[] Display(Game[] array)
         {
+            
             ProductCollection<Game> coll = new ProductCollection<Game>(array);
             Game prod;
+            //Game game = new Game();
+
+            int[] id = new int[array.Length];
+            //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
             {
                 prod = coll[i];
-                prod.Display();
+                prod.Read();
+                id[i] = prod.Id;
             }
+            return id;
         }
+        public override void Read()
+        {
+            Game game = new Game();
+            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
+                               $"{Monufacturer},\n AgeRating: {AgeRating}\n:^)");
+        }
+
     }
     /// <summary>
     /// прочее железо
@@ -65,22 +85,29 @@ namespace Modul7Finish
     {
         protected string Socet { get; set; }
         protected string FormFactor { get; set; }
-        public override void Display()
+        public int[] Display(Matherbord[] array)
         {
-            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
-                   $"{Monufacturer},\n Socet: {Socet},\n FormFactor: {FormFactor},\n :^)");
-        }
-        public void DisplayAll(Matherbord[] array)
-        {
+
+
             ProductCollection<Matherbord> coll = new ProductCollection<Matherbord>(array);
             Matherbord prod;
+
+            int[] id = new int[array.Length];
+            //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
             {
                 prod = coll[i];
-                prod.Display();
+                prod.Read();
+                id[i] = prod.Id;
             }
+            return id;
         }
-
+        public override void Read()
+        {
+            Matherbord read = new Matherbord();
+            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
+                               $"{Monufacturer},\n AgeRating: {Socet}\n:^)");
+        }
     }
     /// <summary>
     /// проц
@@ -89,22 +116,28 @@ namespace Modul7Finish
     {
         protected string Chipset { get; set; }
         protected int CPUFrequency { get; set; }
-        public override void Display()
+        public int[] Display(CPU[] array)
         {
-            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
-                   $"{Monufacturer},\n Chipset: {Chipset},\n CPUFrequency: {CPUFrequency},\n:^)");
-        }
-        public void DisplayAll(CPU[] array)
-        {
+
             ProductCollection<CPU> coll = new ProductCollection<CPU>(array);
             CPU prod;
+            int[] id = new int[array.Length];
+            //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
             {
                 prod = coll[i];
-                prod.Display();
+                prod.Read();
+                id[i] = prod.Id;
             }
+            return id;
         }
 
+        public override void Read()
+        {
+            CPU read = new CPU();
+            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
+                               $"{Monufacturer},\n Chipset: {Chipset}\n:^)");
+        }
     }
     /// <summary>
     /// видюха
@@ -116,45 +149,58 @@ namespace Modul7Finish
         {
             return Prise * 2;
         }
-        public override void Display()
-        {
-            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
-                   $"{Monufacturer},\n VidioMemory: {VidioMemory},\n:^)");
-        }
-        public void DisplayAll(GPU[] array)
+        public int[] Display(GPU[] array)
         {
             ProductCollection<GPU> coll = new ProductCollection<GPU>(array);
             GPU prod;
+            int[] id = new int[array.Length];
+            //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
             {
                 prod = coll[i];
-                prod.Display();
+                prod.Read();
+                id[i] = prod.Id;
             }
+            return id;
         }
 
+        public override void Read()
+        {
+            GPU read = new GPU();
+            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
+                               $"{Monufacturer},\n VidioMemory: {VidioMemory}\n:^)");
+        }
     }
+
+
     /// <summary>
     /// источник притания БП
     /// </summary>
     class PowerSupply : Hardware
     {
         protected int Power { get; set; }
-        public override void Display()
-        {
-            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
-                   $"{Monufacturer},\n Power: {Power},\n:^)");
-        }
-
-        public void DisplayAll(PowerSupply[] array)
+        public int[] Display(PowerSupply[] array)
         {
             ProductCollection<PowerSupply> coll = new ProductCollection<PowerSupply>(array);
             PowerSupply prod;
+            int[] id = new int[array.Length];
+            //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
             {
                 prod = coll[i];
-                prod.Display();
+                prod.Read();
+                id[i] = prod.Id;
             }
+            return id;
         }
+
+        public override void Read()
+        {
+            PowerSupply read = new PowerSupply();
+            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
+                               $"{Monufacturer},\n Power: {Power}\n:^)");
+        }
+
     }
     /// <summary>
     /// ноутбуки
@@ -169,21 +215,26 @@ namespace Modul7Finish
         /// емкость батареи
         /// </summary>
         protected double VolumeBattery { get; set; }
-        public override void Display()
-        {
-            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
-                   $"{Monufacturer},\n Weight: {Weight},\n VolumeBattery: {VolumeBattery},\n:^)");
-        }
-        public void DisplayAll(Laptops[] array)
+        public int[] Display(Laptops[] array)
         {
             ProductCollection<Laptops> coll = new ProductCollection<Laptops>(array);
             Laptops prod;
+            int[] id = new int[array.Length];
+            //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
             {
                 prod = coll[i];
-                prod.Display();
+                prod.Read();
+                id[i] = prod.Id;
             }
+            return id;
         }
 
+        public override void Read()
+        {
+            Laptops read = new Laptops();
+            Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
+                               $"{Monufacturer},\n Weight: {Weight}\n:^)");
+        }
     }
 }

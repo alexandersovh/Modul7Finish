@@ -41,10 +41,10 @@ namespace Modul7Finish
     /// </summary>
     class GameData : Game
     {
-       /// <summary>
-       /// данные обо всех продуктах
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// данные обо всех продуктах
+        /// </summary>
+        /// <returns></returns>
         public static Game[] DataBase()
         {
             Game[] gameArr = new Game[]
@@ -59,8 +59,8 @@ namespace Modul7Finish
                 },
                 new GameData
                 {
-                    Id = 10,
-                    Name = "PlayerUnknown’s Battlegrounds",
+                    Id = 11,
+                    Name = "Battlefild",
                     Prise = 1400,
                     Monufacturer = "Microsoft",
                     AgeRating = 18
@@ -78,17 +78,17 @@ namespace Modul7Finish
             {
                  new MatherbordData
                  {
-                    Id = 20,
-                    Name = "Материнская плата GIGABYTE GA-B250 - FinTech",
+                     Id = 20,
+                    Name = "MSI GA-B250",
                     Prise = 15440,
-                    Monufacturer = "GIGABYTE",
-                    Socet = "LGA1151",
+                    Monufacturer = "MSI",
+                    Socet = "LGA1111",
                     FormFactor = "ATX"
                  },
-                  new MatherbordData
+                 new MatherbordData
                  {
-                    Id = 20,
-                    Name = "Материнская плата GIGABYTE GA-B250 - FinTech",
+                      Id = 21,
+                    Name = "GIGABYTE GA-B250 - FinTech",
                     Prise = 15440,
                     Monufacturer = "GIGABYTE",
                     Socet = "LGA1151",
@@ -107,7 +107,16 @@ namespace Modul7Finish
                 new CPUData
                 {
                     Id = 30,
-                    Name = "Intel Core i7 Bloomfield",
+                    Name = "Intel Core i7",
+                    Prise = 10500,
+                    Monufacturer = "Intel",
+                    CPUFrequency =  5667,
+                    Chipset = " LGA1366"
+                },
+                new CPUData
+                {
+                    Id = 31,
+                    Name = "Intel Core i3",
                     Prise = 5500,
                     Monufacturer = "Intel",
                     CPUFrequency =  2667,
@@ -130,6 +139,14 @@ namespace Modul7Finish
                     Prise = 50419,
                     Monufacturer = "MSI",
                     VidioMemory = 8192
+                },
+                new GPUData
+                {
+                    Id = 41,
+                    Name = "Nvidia RTX 3090 ref",
+                    Prise = 100419,
+                    Monufacturer = "Nvidia",
+                    VidioMemory = 16000
                 }
                    };
             return GPUArr;
@@ -167,6 +184,14 @@ namespace Modul7Finish
                     Monufacturer = "Acer",
                     Weight = 1.94,
                     VolumeBattery = 4810,
+                }, new LaptopsData
+                {
+                    Id = 61,
+                    Name = "ASUS Expertbook B9450FA-BM0556",
+                    Prise = 92990,
+                    Monufacturer = "ASUS",
+                    Weight = 0.88,
+                    VolumeBattery = 66,
                 }
             };
             return laptopsArr;

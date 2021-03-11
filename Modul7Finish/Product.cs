@@ -39,6 +39,7 @@ namespace Modul7Finish
         /// добовляем возрастной ценз
         /// </summary>
         protected int AgeRating { get; set; }
+
         public override double Discount()
         {
             return Prise * 0.2;

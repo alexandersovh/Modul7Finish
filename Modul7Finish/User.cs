@@ -9,19 +9,38 @@ namespace Modul7Finish
         protected string Name { get; set; }
         protected string Adress { get; set; }
         protected double Balance { get; set; }
-        protected int Age { get; set; }
-
-        public double LogicBuyUser(double prise, double balans)
+        private int age;
+        protected int Age
         {
-            if (prise <= balans)
+            get { return age; }
+            set
             {
-                return prise - balans;
+                if (value < 14)
+                {
+                    Console.WriteLine("Возраст должен быть больше 14");
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+            
+        }
+
+        public double LogicBuyUser(double prise, double balanse)
+        {
+            Balance = balanse;
+            if (prise <= Balance)
+            {
+                return Balance -= prise;
+                balanse = Balance;
             }
             else
             {
                 Console.WriteLine("недостаточно средств");
-                return balans;
+                return Balance;
             }
+
         }
 
     }
@@ -47,7 +66,7 @@ namespace Modul7Finish
             Console.Write("введите возраст: ");
             Age = int.Parse(Console.ReadLine());
 
-            WriteSet();
+            //WriteSet();
         }
         public UserWrite(string name, string adress, double balance, int age)
         {
@@ -123,10 +142,10 @@ namespace Modul7Finish
             UserCollection userCollection = new UserCollection(arrUser);
             UserData userData = new UserData();
             userData = userCollection[i];
-            
+
             UserWrite userWrite = new UserWrite(userData.Name, userData.Adress, userData.Balance, userData.Age);
             Console.Write($"Это ваши данные: {i + 1} \n{userData.Name},\n{userData.Adress},\n{userData.Balance},\n{userData.Age}\n\n");
-            var dataUser = (userData.Name, userData.Adress, userData.Balance, userData.Age );
+            var dataUser = (userData.Name, userData.Adress, userData.Balance, userData.Age);
             return dataUser;
         }
         /// <summary>
@@ -141,21 +160,21 @@ namespace Modul7Finish
                 {
                    Name = "Никола",
                    Adress = "улица 1 Мая дом 5",
-                   Balance = 1506,
+                   Balance = 15060,
                    Age = 19
                 },
                 new UserData
                 {
                    Name = "Павел",
                    Adress = "3-я улица Строителей, дом 25",
-                   Balance = 597,
+                   Balance = 5970,
                    Age = 25
                 },
                 new UserData
                 {
                    Name = "Эдвард",
                    Adress = "Централ, дом 11",
-                   Balance = 3000,
+                   Balance = 30000,
                    Age = 100
                 }
             };

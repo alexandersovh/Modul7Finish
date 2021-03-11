@@ -2,19 +2,9 @@
 
 namespace Modul7Finish
 {
-    //class Order<Tdelivery, Tstruct> where Tdelivery : Delivery
-    //{
-    //    public Tdelivery delivery;
-    //    public int number;
-    //    public string description;
-
-    //    public void displayaddress()
-    //    {
-
-    //    }
     class Order
     {
-        public static string UserDisplay()
+        public static (string Name, string Adress, double Balance, int Age) UserDisplay()
         {
             var arrUser = UserData.UserDataSet();
 
@@ -40,26 +30,14 @@ namespace Modul7Finish
                 userData = userCollection[ires - 1];
                 UserData userData2 = new UserData();
 
-                return userData2.UserSetData(ires - 1).Item1;
-            } 
+                return userData2.UserSetData(ires - 1);
+            }
             else
             {
                 UserWrite userWrite = new UserWrite();
-                return userWrite.WriteSet().Item1;
+                return userWrite.WriteSet();
             }
 
-        }
-        public static void DisplayProductAll()
-        {
-            string name;
-            int i = 1;
-            string[] categories = new string[] { "игры", "материнские платы", "процессоры", "видеокарты", "блоки питaния", "ноутбуки" };
-            Console.WriteLine("Здравствуйте, {0}, выберете категорию, для продолжния пакупки:", name = UserDisplay());
-            foreach(string a in categories)
-            {
-                Console.WriteLine("№ " + i++ + " " + a);
-            }
-            Console.WriteLine("наипишите на русском с мальнькой буквы или укажите номер категории");
         }
         public static (int[], double[]) СhooseCat<T>(T ch)
         {
@@ -94,15 +72,15 @@ namespace Modul7Finish
                     Console.WriteLine("блоки питaния");
                     var psData = PowerSupplyData.DataBase();
                     PowerSupply powerSupply = new PowerSupply();
-                    
-                    return powerSupply.Display(psData);;
+
+                    return powerSupply.Display(psData); ;
                     break;
                 case "ноутбуки":
                     Console.WriteLine("ноутбуки");
                     var lData = LaptopsData.DataBase();
                     Laptops laptops = new Laptops();
                     return laptops.Display(lData);
-                    break;          
+                    break;
                 case 1:
                     Console.WriteLine("игры");
                     var ga1 = GameData.DataBase();
@@ -147,8 +125,18 @@ namespace Modul7Finish
                     break;
             }
         }
-        public static (int[], double[]) LogicСhoice()
+        public static (int Id, double Prise) LogicСhoice(string name)
         {
+            //string name;
+            int iCicle = 1;
+            string[] categories = new string[] { "игры", "материнские платы", "процессоры", "видеокарты", "блоки питaния", "ноутбуки" };
+            Console.WriteLine("Здравствуйте, {0}, выберете категорию, для продолжния пакупки:", name);
+            foreach (string a in categories)
+            {
+                Console.WriteLine("№ " + iCicle++ + " " + a);
+            }
+            Console.WriteLine("наипишите на русском с мальнькой буквы или укажите номер категории");
+
             string str = Console.ReadLine();
             int num;
             int[] id;
@@ -164,34 +152,29 @@ namespace Modul7Finish
             }
             Console.Write("введите Id тавара для которое хотите приобрести:");
             int idProduct = int.Parse(Console.ReadLine());
-            int i = 0;
-            while (id[i] != idProduct && i < id.Length)
+            int iArray = -1;
+            int idNum = default;
+            double priseNum = default;
+            do
             {
-                i++;
-            } 
-            Console.WriteLine("Ваш тавар");
-            return (id, prise);
-        }
-        public static void LogicBuy<T>()
-        {
-            
-        }
+                iArray++;
+                idNum = id[iArray];
+                priseNum = prise[iArray];
+            } while (id[iArray] != idProduct && iArray < id.Length);
 
-        public void DeliviriCall(string a)
+            Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
+            return (idNum, priseNum);
+        }
+        public static void LogicBuy()
         {
-            if (a == "home")
-            {
-                Informer.FimalReport();
-
-            }
-            else if (a == "poin")
-            {
-                Informer.FimalReport();
-            }
-            else if (a == "shop")
-            {
-                Informer.FimalReport();
-            }
+            User user = new User();
+            var na = UserDisplay();
+            string n = na.Name;
+            string stoper;
+            double balance = na.Balance;
+            double prise = LogicСhoice(n).Prise;
+            double sum = user.LogicBuyUser(prise, balance);
+            Console.WriteLine("остаток: " + sum);
         }
     }
 }

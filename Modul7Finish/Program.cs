@@ -8,11 +8,8 @@ namespace Modul7Finish
         {
             //Order.DisplayProductAll();
 
-            Order.LogicСhoice();
-
-
-
-
+            Order.LogicBuy();
+            Console.WriteLine("спасибо за покупку, досвидани");
 
             Console.ReadLine();
         }

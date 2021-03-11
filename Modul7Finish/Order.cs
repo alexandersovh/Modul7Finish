@@ -165,16 +165,16 @@ namespace Modul7Finish
             Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
             return (idNum, priseNum);
         }
-        public static void LogicBuy()
+        public static void LogicBuy((string Name, string Adress, double Balance, int Age) userDisplay )
         {
             User user = new User();
-            var na = UserDisplay();
-            string n = na.Name;
-            string stoper;
-            double balance = na.Balance;
+            string n = userDisplay.Name;
+            double balance = userDisplay.Balance;
             double prise = LogicСhoice(n).Prise;
             double sum = user.LogicBuyUser(prise, balance);
             Console.WriteLine("остаток: " + sum);
+            Console.WriteLine("спасибо за покупку, досвидани");
+
         }
     }
 }

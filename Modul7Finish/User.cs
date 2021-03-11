@@ -18,6 +18,7 @@ namespace Modul7Finish
                 if (value < 14)
                 {
                     Console.WriteLine("Возраст должен быть больше 14");
+                    Order.UserDisplay();
                 }
                 else
                 {

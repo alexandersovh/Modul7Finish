@@ -7,8 +7,8 @@ namespace Modul7Finish
         static void Main(string[] args)
         {
             //Order.DisplayProductAll();
-            var usre = Order.UserDisplay();
-            Order.LogicBuy(usre);
+            
+            Order.LogicBuy(Order.UserDisplay());
             Console.WriteLine("спасибо за покупку, досвидани");
 
             Console.ReadLine();

@@ -5,20 +5,16 @@ namespace Modul7Finish
     class Order
     {
         public static (string Name, string Adress, double Balance, int Age) UserDisplay()
-        {
-            var arrUser = UserData.UserDataSet();
-
-            UserCollection userCollection = new UserCollection(arrUser);
-
-            UserData userData;
-
+        {               
             Console.WriteLine("здравствуйте вы впервые в магазине (введите да/нет)");
-            string q = Console.ReadLine();
-            if (q == "нет")
+            string branch = Console.ReadLine();
+
+            if (branch == "нет")
             {
-                for (int i = 0; i < arrUser.Length; i++)
+                //var arrUser = UserData.UserDataGet();
+                for (int i = 0; i < UserData.UserDataGet().Length; i++)
                 {
-                    userData = userCollection[i];
+                    //UserData.UserSetData(i);
                     UserData userData1 = new UserData();
                     userData1.UserSetData(i);
                 }
@@ -27,9 +23,8 @@ namespace Modul7Finish
 
                 ires = int.Parse(Console.ReadLine());
 
-                userData = userCollection[ires - 1];
+                //userData = userCollection[ires - 1];
                 UserData userData2 = new UserData();
-
                 return userData2.UserSetData(ires - 1);
             }
             else

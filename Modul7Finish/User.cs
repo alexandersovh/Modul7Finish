@@ -23,6 +23,7 @@ namespace Modul7Finish
                 return balans;
             }
         }
+
     }
     class UserWrite : User
     {

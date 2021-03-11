@@ -59,10 +59,9 @@ namespace Modul7Finish
             {
                 Console.WriteLine("№ " + i++ + " " + a);
             }
-            Console.WriteLine();
             Console.WriteLine("наипишите на русском с мальнькой буквы или укажите номер категории");
         }
-        public static int[] СhooseCat<T>(T ch)
+        public static (int[], double[]) СhooseCat<T>(T ch)
         {
             switch (ch)
             {
@@ -142,26 +141,26 @@ namespace Modul7Finish
                     break;
                 default:
                     Console.WriteLine("Нет такой категории");
-                    int[] a = new int[] { 0 };
-                    return a;
+                    int[] a = default;
+                    double[] b = default;
+                    return (a, b);
                     break;
             }
         }
-        public static void LogicBuy()
+        public static (int[], double[]) LogicСhoice()
         {
             string str = Console.ReadLine();
             int num;
             int[] id;
+            double[] prise;
             bool isNum = int.TryParse(str, out num);
             if (isNum)
             {
-                //Order.СhooseCat<int>(num);
-                id = (Order.СhooseCat<int>(num));
+                (id, prise) = (Order.СhooseCat<int>(num));
             }
             else
             {
-                //Order.СhooseCat<string>(str);
-                id = (Order.СhooseCat<string>(str));
+                (id, prise) = (Order.СhooseCat<string>(str));
             }
             Console.Write("введите Id тавара для которое хотите приобрести:");
             int idProduct = int.Parse(Console.ReadLine());
@@ -170,11 +169,14 @@ namespace Modul7Finish
             {
                 i++;
             } 
-
-
-
             Console.WriteLine("Ваш тавар");
+            return (id, prise);
         }
+        public static void LogicBuy<T>()
+        {
+            
+        }
+
         public void DeliviriCall(string a)
         {
             if (a == "home")

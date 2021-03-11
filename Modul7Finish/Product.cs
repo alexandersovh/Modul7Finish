@@ -8,7 +8,7 @@ namespace Modul7Finish
     {
         protected int Id { get; set; }
         protected string Name { get; set; }
-        protected double Prise { get; set; }
+        public double Prise { get; protected set; }
         protected string Monufacturer { get; set; }
         //public abstract void Сharacteristic();
         public virtual double Discount()
@@ -43,7 +43,7 @@ namespace Modul7Finish
         {
             return Prise * 0.2;
         }
-        public int[] Display(Game[] array)
+        public ( int[], double[] ) Display(Game[] array)
         {
             
             ProductCollection<Game> coll = new ProductCollection<Game>(array);
@@ -51,14 +51,17 @@ namespace Modul7Finish
             //Game game = new Game();
 
             int[] id = new int[array.Length];
+            double[] prise = new double[array.Length];
             //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
             {
+
                 prod = coll[i];
                 prod.Read();
                 id[i] = prod.Id;
+                prise[i] = prod.Prise;
             }
-            return id;
+            return (id, prise);
         }
         public override void Read()
         {
@@ -85,12 +88,14 @@ namespace Modul7Finish
     {
         protected string Socet { get; set; }
         protected string FormFactor { get; set; }
-        public int[] Display(Matherbord[] array)
+        public (int[], double[]) Display(Matherbord[] array)
         {
 
 
             ProductCollection<Matherbord> coll = new ProductCollection<Matherbord>(array);
             Matherbord prod;
+
+            double[] prise = new double[array.Length];
 
             int[] id = new int[array.Length];
             //var dataUser = (Id, Name, Prise, Monufacturer);
@@ -99,8 +104,10 @@ namespace Modul7Finish
                 prod = coll[i];
                 prod.Read();
                 id[i] = prod.Id;
+                prise[i] = prod.Prise;
+
             }
-            return id;
+            return (id, prise);
         }
         public override void Read()
         {
@@ -116,11 +123,14 @@ namespace Modul7Finish
     {
         protected string Chipset { get; set; }
         protected int CPUFrequency { get; set; }
-        public int[] Display(CPU[] array)
+        public (int[], double[]) Display(CPU[] array)
         {
 
             ProductCollection<CPU> coll = new ProductCollection<CPU>(array);
             CPU prod;
+
+            double[] prise = new double[array.Length];
+
             int[] id = new int[array.Length];
             //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
@@ -128,8 +138,10 @@ namespace Modul7Finish
                 prod = coll[i];
                 prod.Read();
                 id[i] = prod.Id;
+                prise[i] = prod.Prise;
+
             }
-            return id;
+            return (id, prise);
         }
 
         public override void Read()
@@ -149,10 +161,12 @@ namespace Modul7Finish
         {
             return Prise * 2;
         }
-        public int[] Display(GPU[] array)
+        public (int[], double[]) Display(GPU[] array)
         {
             ProductCollection<GPU> coll = new ProductCollection<GPU>(array);
             GPU prod;
+            double[] prise = new double[array.Length];
+
             int[] id = new int[array.Length];
             //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
@@ -160,8 +174,10 @@ namespace Modul7Finish
                 prod = coll[i];
                 prod.Read();
                 id[i] = prod.Id;
+                prise[i] = prod.Prise;
+
             }
-            return id;
+            return (id, prise);
         }
 
         public override void Read()
@@ -179,10 +195,12 @@ namespace Modul7Finish
     class PowerSupply : Hardware
     {
         protected int Power { get; set; }
-        public int[] Display(PowerSupply[] array)
+        public (int[], double[]) Display(PowerSupply[] array)
         {
             ProductCollection<PowerSupply> coll = new ProductCollection<PowerSupply>(array);
             PowerSupply prod;
+            double[] prise = new double[array.Length];
+
             int[] id = new int[array.Length];
             //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
@@ -190,8 +208,12 @@ namespace Modul7Finish
                 prod = coll[i];
                 prod.Read();
                 id[i] = prod.Id;
+                prise[i] = prod.Prise;
+
+
+
             }
-            return id;
+            return (id, prise);
         }
 
         public override void Read()
@@ -215,10 +237,12 @@ namespace Modul7Finish
         /// емкость батареи
         /// </summary>
         protected double VolumeBattery { get; set; }
-        public int[] Display(Laptops[] array)
+        public (int[], double[]) Display(Laptops[] array)
         {
             ProductCollection<Laptops> coll = new ProductCollection<Laptops>(array);
             Laptops prod;
+
+            double[] prise = new double[array.Length];
             int[] id = new int[array.Length];
             //var dataUser = (Id, Name, Prise, Monufacturer);
             for (int i = 0; i < array.Length; i++)
@@ -226,8 +250,10 @@ namespace Modul7Finish
                 prod = coll[i];
                 prod.Read();
                 id[i] = prod.Id;
+                prise[i] = prod.Prise;
+
             }
-            return id;
+            return (id, prise);
         }
 
         public override void Read()

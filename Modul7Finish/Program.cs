@@ -8,7 +8,7 @@ namespace Modul7Finish
         {
             //Order.DisplayProductAll();
 
-            Order.LogicBuy();
+            Order.LogicСhoice();
 
 
 

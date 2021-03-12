@@ -267,6 +267,7 @@ namespace Modul7Finish
         }
         public override double Choise(int[] id, double[] prise)
         {
+            Console.Write("введите Id тавара для которое хотите приобрести:");
             int idProduct = int.Parse(Console.ReadLine());
             int iArray = -1;
             int idNum = default;
@@ -319,6 +320,7 @@ namespace Modul7Finish
         }
         public override double Choise(int[] id, double[] prise)
         {
+            Console.Write("введите Id тавара для которое хотите приобрести:");
             int idProduct = int.Parse(Console.ReadLine());
             int iArray = -1;
             int idNum = default;
@@ -375,6 +377,7 @@ namespace Modul7Finish
         }
         public override double Choise(int[] id, double[] prise)
         {
+            Console.Write("введите Id тавара для которое хотите приобрести:");
             int idProduct = int.Parse(Console.ReadLine());
             int iArray = -1;
             int idNum = default;

@@ -39,7 +39,7 @@ namespace Modul7Finish
 
                 do
                 {
-                    //Console.Write("неверно указанное число :^(");
+                    Console.Write("неверно указанное число :^(");
 
                     string ires = Console.ReadLine();
                     bool check = int.TryParse(ires, out num);

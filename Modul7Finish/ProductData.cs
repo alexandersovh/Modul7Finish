@@ -74,10 +74,8 @@ namespace Modul7Finish
     {
         public static Matherbord[] DataBase()
         {
-            var matherbordArr = new Matherbord[]
-            {
-                 new MatherbordData
-                 {
+            var matherbordArr = new Matherbord[]{
+                 new MatherbordData{
                      Id = 20,
                     Name = "MSI GA-B250",
                     Prise = 15440,
@@ -85,15 +83,13 @@ namespace Modul7Finish
                     Socet = "LGA1111",
                     FormFactor = "ATX"
                  },
-                 new MatherbordData
-                 {
+                 new MatherbordData{
                       Id = 21,
                     Name = "GIGABYTE GA-B250 - FinTech",
                     Prise = 15440,
                     Monufacturer = "GIGABYTE",
                     Socet = "LGA1151",
-                    FormFactor = "ATX"
-                 }
+                    FormFactor = "ATX"}
             };
             return matherbordArr;
         }

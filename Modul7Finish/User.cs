@@ -12,21 +12,21 @@ namespace Modul7Finish
         protected int age;
         protected int Age
         {
-            get { return age; }
-            set
-            {
-                if (value < 18)
+            get 
+            {  
+                if (age < 18 )
                 {
                     Console.WriteLine("Возраст меньше 18 лет, некоторые покупки будут недоступны");
+                    return age;
                 }
-                else
-                {
-                    age = value;
-                }
+                return age; 
             }
-
+            set
+            {
+               
+            }
+  
         }
-
         public double LogicBuyUser(double prise, double balanse)
         {
             Balance = balanse;
@@ -64,9 +64,14 @@ namespace Modul7Finish
 
             Console.Write("введите возраст: ");
             Age = int.Parse(Console.ReadLine());
-
+            
+            
             //WriteSet();
         }
+        //public UserWrite(UserData[] array)
+        //{
+        //    UserCollection userCollection = new UserCollection(array);
+        //}
         public UserWrite(string name, string adress, double balance, int age)
         {
             Name = name;
@@ -107,11 +112,12 @@ namespace Modul7Finish
     /// </summary>
     class UserCollection : UserData
     {
-        public UserData[] users;
-        public UserCollection(UserData[] users)
-        {
-            this.users = users;
-        }
+        
+        public UserData[] users = UserData.UserDataGet();
+        //public UserCollection(UserData[] users)
+        //{
+        //    this.users = users;
+        //}
         public UserData this[int index]
         {
             get
@@ -136,18 +142,16 @@ namespace Modul7Finish
         public (string, string, double, int) UserSetData(int i)
         {
             //var arrUser = UserDataGet();
-            UserData userData = new UserData();
+            //UserData userData = new UserData();
 
-            UserCollection userCollection = new UserCollection(UserDataGet());
+            //UserCollection userCollection = new UserCollection(UserDataGet());
 
-            userData = userCollection.users[i];
+            //userData = userCollection.users[i];
 
             //UserWrite userWrite = new UserWrite(userData.Name, userData.Adress, userData.Balance, userData.Age);
-            Console.Write($"Это ваши данные: {i + 1} \n{userData.Name},\n{userData.Adress},\n{userData.Balance},\n{userData.age}\n\n");
+            Console.Write($"Это ваши данные: {i + 1} \n{Name},\n{Adress},\n{Balance},\n{age}\n\n");
 
-            return (userData.Name, userData.Adress, userData.Balance, userData.Age);
-
-
+            return (Name, Adress, Balance, Age);
         }
         /// <summary>
         /// здесь массив с людьм
@@ -162,21 +166,21 @@ namespace Modul7Finish
                    Name = "Никола",
                    Adress = "улица 1 Мая дом 5",
                    Balance = 15060,
-                   Age = 16
+                   age = 16
                 },
                 new UserData
                 {
                    Name = "Павел",
                    Adress = "3-я улица Строителей, дом 25",
                    Balance = 5970,
-                   Age = 25
+                   age = 25
                 },
                 new UserData
                 {
                    Name = "Эдвард",
                    Adress = "Централ, дом 11",
                    Balance = 30000,
-                   Age = 100
+                   age = 100
                 }
             };
             return DataUserGet;

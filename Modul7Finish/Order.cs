@@ -5,27 +5,39 @@ namespace Modul7Finish
     class Order
     {
         public static (string Name, string Adress, double Balance, int Age) UserDisplay()
-        {               
+        {
             Console.WriteLine("здравствуйте вы впервые в магазине (введите да/нет)");
             string branch = Console.ReadLine();
 
             if (branch == "нет")
             {
                 //var arrUser = UserData.UserDataGet();
+                UserData userData;
+                UserCollection userCollection = new UserCollection();
+
                 for (int i = 0; i < UserData.UserDataGet().Length; i++)
                 {
-                    //UserData.UserSetData(i);
-                    UserData userData1 = new UserData();
-                    userData1.UserSetData(i);
+                    //UserData userData = new UserData();
+                    userData = userCollection[i];
+
+                    userData.UserSetData(i);
                 }
-                int ires;
+                int num = 0;
+                bool check1 = false;
                 Console.Write("укажите ваше № вашего имени: ");
+                while (check1 != true || num - 1 > UserData.UserDataGet().Length || num - 1 < 0)
+                {
+                    //Console.Write("неверно указанное число :^(");
+                    Console.Write("нет такого номера, попробуй еще раз: ");
+                    string ires = Console.ReadLine();
+                    bool check = int.TryParse(ires, out num);
+                    check1 = check;
+                } 
 
-                ires = int.Parse(Console.ReadLine());
+                userData = userCollection[num - 1];
+                //UserData userData2 = new UserData();
 
-                //userData = userCollection[ires - 1];
-                UserData userData2 = new UserData();
-                return userData2.UserSetData(ires - 1);
+                return userData.UserSetData(num - 1);
             }
             else
             {
@@ -160,7 +172,7 @@ namespace Modul7Finish
             Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
             return (idNum, priseNum);
         }
-        public static void LogicBuy((string Name, string Adress, double Balance, int Age) userDisplay )
+        public static void LogicBuy((string Name, string Adress, double Balance, int Age) userDisplay)
         {
             User user = new User();
             string n = userDisplay.Name;

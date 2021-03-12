@@ -9,23 +9,19 @@ namespace Modul7Finish
         public string Name { get; set; }
         protected string Adress { get; set; }
         protected double Balance { get; set; }
-        protected int age;
+        public int age;
         protected int Age
         {
             get 
             {  
                 if (age < 18 )
                 {
-                    Console.WriteLine("Возраст меньше 18 лет, некоторые покупки будут недоступны");
+                    Console.WriteLine("Возраст меньше 18 лет, некоторые покупки будут недоступны\n");
                     return age;
                 }
                 return age; 
             }
-            set
-            {
-               
-            }
-  
+            set { }
         }
         public double LogicBuyUser(double prise, double balanse)
         {
@@ -65,13 +61,7 @@ namespace Modul7Finish
             Console.Write("введите возраст: ");
             Age = int.Parse(Console.ReadLine());
             
-            
-            //WriteSet();
         }
-        //public UserWrite(UserData[] array)
-        //{
-        //    UserCollection userCollection = new UserCollection(array);
-        //}
         public UserWrite(string name, string adress, double balance, int age)
         {
             Name = name;
@@ -114,10 +104,6 @@ namespace Modul7Finish
     {
         
         public UserData[] users = UserData.UserDataGet();
-        //public UserCollection(UserData[] users)
-        //{
-        //    this.users = users;
-        //}
         public UserData this[int index]
         {
             get
@@ -139,17 +125,9 @@ namespace Modul7Finish
     }
     class UserData : User
     {
-        public (string, string, double, int) UserSetData(int i)
+        public (string Name, string Adress, double Balance, int age) UserSetData(int i)
         {
-            //var arrUser = UserDataGet();
-            //UserData userData = new UserData();
-
-            //UserCollection userCollection = new UserCollection(UserDataGet());
-
-            //userData = userCollection.users[i];
-
-            //UserWrite userWrite = new UserWrite(userData.Name, userData.Adress, userData.Balance, userData.Age);
-            Console.Write($"Это ваши данные: {i + 1} \n{Name},\n{Adress},\n{Balance},\n{age}\n\n");
+            Console.Write($"Это ваши данные: {i + 1} \n{Name},\n{Adress},\n{Balance},\n{age}\n");
 
             return (Name, Adress, Balance, Age);
         }

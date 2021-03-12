@@ -4,6 +4,7 @@ namespace Modul7Finish
 {
     class Order
     {
+        public int resultAge;
         public static (string Name, string Adress, double Balance, int Age) UserDisplay()
         {
             Console.WriteLine("здравствуйте вы впервые в магазине (введите да/нет)");
@@ -25,19 +26,21 @@ namespace Modul7Finish
                 int num = 0;
                 bool check1 = false;
                 Console.Write("укажите ваше № вашего имени: ");
-                while (check1 != true || num - 1 > UserData.UserDataGet().Length || num - 1 < 0)
+
+                do
                 {
                     //Console.Write("неверно указанное число :^(");
-                    Console.Write("нет такого номера, попробуй еще раз: ");
+                    
                     string ires = Console.ReadLine();
                     bool check = int.TryParse(ires, out num);
                     check1 = check;
-                } 
+                } while (check1 != true || num - 1 > UserData.UserDataGet().Length || num - 1 < 0);
 
                 userData = userCollection[num - 1];
-                //UserData userData2 = new UserData();
-
+                Order order = new Order();
+                order.resultAge = userData.UserSetData(num - 1).age;
                 return userData.UserSetData(num - 1);
+
             }
             else
             {
@@ -46,7 +49,7 @@ namespace Modul7Finish
             }
 
         }
-        public static (int[], double[]) СhooseCat<T>(T ch)
+        public static double СhooseCat<T>(T ch)
         {
             switch (ch)
             {
@@ -127,12 +130,12 @@ namespace Modul7Finish
                 default:
                     Console.WriteLine("Нет такой категории");
                     int[] a = default;
-                    double[] b = default;
-                    return (a, b);
+                    double b = default;
+                    return b;
                     break;
             }
         }
-        public static (int Id, double Prise) LogicСhoice(string name)
+        public static double LogicСhoice(string name)
         {
             //string name;
             int iCicle = 1;
@@ -146,38 +149,44 @@ namespace Modul7Finish
 
             string str = Console.ReadLine();
             int num;
-            int[] id;
-            double[] prise;
+            //int[] id;
+            double prise;
             bool isNum = int.TryParse(str, out num);
             if (isNum)
             {
-                (id, prise) = (Order.СhooseCat<int>(num));
+                prise = (Order.СhooseCat<int>(num));
             }
             else
             {
-                (id, prise) = (Order.СhooseCat<string>(str));
+                prise = (Order.СhooseCat<string>(str));
             }
-            Console.Write("введите Id тавара для которое хотите приобрести:");
-            int idProduct = int.Parse(Console.ReadLine());
-            int iArray = -1;
-            int idNum = default;
-            double priseNum = default;
-            do
-            {
-                iArray++;
-                idNum = id[iArray];
-                priseNum = prise[iArray];
-            } while (id[iArray] != idProduct && iArray < id.Length);
+            //Console.Write("введите Id тавара для которое хотите приобрести:");
+            //var prod = (id, prise);
 
-            Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
-            return (idNum, priseNum);
+            //T product = prod;
+            //product.Choise(id, prise);
+            //int idProduct = int.Parse(Console.ReadLine());
+            //int iArray = -1;
+            //int idNum = default;
+            //double priseNum = default;
+
+            //do
+            //{
+            //    iArray++;
+            //    idNum = id[iArray];
+            //    priseNum = prise[iArray];
+            //} while (id[iArray] != idProduct && iArray < id.Length);
+
+            //Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
+
+            return prise;
         }
         public static void LogicBuy((string Name, string Adress, double Balance, int Age) userDisplay)
         {
             User user = new User();
             string n = userDisplay.Name;
             double balance = userDisplay.Balance;
-            double prise = LogicСhoice(n).Prise;
+            double prise = LogicСhoice(n);
             double sum = user.LogicBuyUser(prise, balance);
             Console.WriteLine("остаток: " + sum);
             Console.WriteLine("спасибо за покупку, досвидани");

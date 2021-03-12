@@ -55,7 +55,7 @@ namespace Modul7Finish
                     Name = "PlayerUnknown’s Battlegrounds",
                     Prise = 1400,
                     Monufacturer = "Microsoft",
-                    AgeRating = 18
+                    ageRating = 18
                 },
                 new GameData
                 {
@@ -63,7 +63,7 @@ namespace Modul7Finish
                     Name = "Battlefild",
                     Prise = 1400,
                     Monufacturer = "Microsoft",
-                    AgeRating = 18
+                    ageRating = 18
                 }
 
             };

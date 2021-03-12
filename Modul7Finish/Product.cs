@@ -27,48 +27,90 @@ namespace Modul7Finish
             return Prise;
         }
         abstract public void Read();
-        //{
-        //    Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
-        //                       $"{Monufacturer},\n\n:^)");
-        //}
-
+        public abstract double Choise(int[] id, double[] prise);
+        
     }
     class Game : Product
     {
         /// <summary>
         /// добовляем возрастной ценз
         /// </summary>
-        protected int AgeRating { get; set; }
+        /// 
+        protected int ageRating;
+        protected int AgeRating
+        {
+            ///проверка при получении
+            get
+            {
+                Order order = new Order();
+                if (ageRating > order.resultAge)
+                {
+                    return 0;
+                }
+                return ageRating;
+            }
+            set
+            {
+
+            }
+        }
 
         public override double Discount()
         {
             return Prise * 0.2;
         }
-        public ( int[], double[] ) Display(Game[] array)
+        public double Display(Game[] array)
         {
-            
+            ///if (AgeRating == 0)
+            //{
+            //    int[] defId = default;
+            //    double[] defPrise = default;
+            //    return (defId, defPrise);
+            //}
+
             ProductCollection<Game> coll = new ProductCollection<Game>(array);
-            Game prod;
-            //Game game = new Game();
+            Game prod = new Game();
 
             int[] id = new int[array.Length];
             double[] prise = new double[array.Length];
-            //var dataUser = (Id, Name, Prise, Monufacturer);
+
             for (int i = 0; i < array.Length; i++)
             {
-
                 prod = coll[i];
                 prod.Read();
                 id[i] = prod.Id;
                 prise[i] = prod.Prise;
             }
-            return (id, prise);
+            return Choise(id, prise);
         }
+
         public override void Read()
         {
             Game game = new Game();
             Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
                                $"{Monufacturer},\n AgeRating: {AgeRating}\n:^)");
+        }
+        public override double Choise(int[] id, double[] prise)
+        {
+            Console.Write("введите Id тавара для которое хотите приобрести:");
+            int idProduct = int.Parse(Console.ReadLine());
+            int iArray = -1;
+            int idNum = default;
+            double priseNum = default;
+            if (ageRating == 0)
+            {
+                Console.WriteLine("вы не можите купить этот тавар");
+                return priseNum;
+            }
+
+            do
+            {
+                iArray++;
+                idNum = id[iArray];
+                priseNum = prise[iArray];
+            } while (id[iArray] != idProduct && iArray < id.Length);
+            Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
+            return priseNum;
         }
 
     }
@@ -89,7 +131,7 @@ namespace Modul7Finish
     {
         protected string Socet { get; set; }
         protected string FormFactor { get; set; }
-        public (int[], double[]) Display(Matherbord[] array)
+        public double Display(Matherbord[] array)
         {
 
 
@@ -108,13 +150,31 @@ namespace Modul7Finish
                 prise[i] = prod.Prise;
 
             }
-            return (id, prise);
+            return Choise(id, prise);
         }
         public override void Read()
         {
             Matherbord read = new Matherbord();
             Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
                                $"{Monufacturer},\n AgeRating: {Socet}\n:^)");
+        }
+        public override double Choise(int[] id, double[] prise)
+        {
+            Console.Write("введите Id тавара для которое хотите приобрести:");
+            int idProduct = int.Parse(Console.ReadLine());
+            int iArray = -1;
+            int idNum = default;
+            double priseNum = default;
+
+            do
+            {
+                iArray++;
+                idNum = id[iArray];
+                priseNum = prise[iArray];
+            } while (id[iArray] != idProduct && iArray < id.Length);
+            Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
+            return priseNum;
+
         }
     }
     /// <summary>
@@ -124,7 +184,7 @@ namespace Modul7Finish
     {
         protected string Chipset { get; set; }
         protected int CPUFrequency { get; set; }
-        public (int[], double[]) Display(CPU[] array)
+        public double Display(CPU[] array)
         {
 
             ProductCollection<CPU> coll = new ProductCollection<CPU>(array);
@@ -142,7 +202,7 @@ namespace Modul7Finish
                 prise[i] = prod.Prise;
 
             }
-            return (id, prise);
+            return Choise(id, prise);
         }
 
         public override void Read()
@@ -150,6 +210,24 @@ namespace Modul7Finish
             CPU read = new CPU();
             Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
                                $"{Monufacturer},\n Chipset: {Chipset}\n:^)");
+        }
+        public override double Choise(int[] id, double[] prise)
+        {
+            Console.Write("введите Id тавара для которое хотите приобрести:");
+            int idProduct = int.Parse(Console.ReadLine());
+            int iArray = -1;
+            int idNum = default;
+            double priseNum = default;
+
+            do
+            {
+                iArray++;
+                idNum = id[iArray];
+                priseNum = prise[iArray];
+            } while (id[iArray] != idProduct && iArray < id.Length);
+            Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
+            return priseNum;
+
         }
     }
     /// <summary>
@@ -162,7 +240,7 @@ namespace Modul7Finish
         {
             return Prise * 2;
         }
-        public (int[], double[]) Display(GPU[] array)
+        public double Display(GPU[] array)
         {
             ProductCollection<GPU> coll = new ProductCollection<GPU>(array);
             GPU prod;
@@ -178,17 +256,33 @@ namespace Modul7Finish
                 prise[i] = prod.Prise;
 
             }
-            return (id, prise);
-        }
+            return Choise(id, prise);
 
+        }
         public override void Read()
         {
             GPU read = new GPU();
             Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
                                $"{Monufacturer},\n VidioMemory: {VidioMemory}\n:^)");
         }
-    }
+        public override double Choise(int[] id, double[] prise)
+        {
+            int idProduct = int.Parse(Console.ReadLine());
+            int iArray = -1;
+            int idNum = default;
+            double priseNum = default;
 
+            do
+            {
+                iArray++;
+                idNum = id[iArray];
+                priseNum = prise[iArray];
+            } while (id[iArray] != idProduct && iArray < id.Length);
+            Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
+            return priseNum;
+
+        }
+    }
 
     /// <summary>
     /// источник притания БП
@@ -196,7 +290,7 @@ namespace Modul7Finish
     class PowerSupply : Hardware
     {
         protected int Power { get; set; }
-        public (int[], double[]) Display(PowerSupply[] array)
+        public double Display(PowerSupply[] array)
         {
             ProductCollection<PowerSupply> coll = new ProductCollection<PowerSupply>(array);
             PowerSupply prod;
@@ -214,7 +308,7 @@ namespace Modul7Finish
 
 
             }
-            return (id, prise);
+            return Choise(id, prise);
         }
 
         public override void Read()
@@ -223,7 +317,23 @@ namespace Modul7Finish
             Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
                                $"{Monufacturer},\n Power: {Power}\n:^)");
         }
+        public override double Choise(int[] id, double[] prise)
+        {
+            int idProduct = int.Parse(Console.ReadLine());
+            int iArray = -1;
+            int idNum = default;
+            double priseNum = default;
 
+            do
+            {
+                iArray++;
+                idNum = id[iArray];
+                priseNum = prise[iArray];
+            } while (id[iArray] != idProduct && iArray < id.Length);
+            Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
+            return priseNum;
+
+        }
     }
     /// <summary>
     /// ноутбуки
@@ -238,7 +348,7 @@ namespace Modul7Finish
         /// емкость батареи
         /// </summary>
         protected double VolumeBattery { get; set; }
-        public (int[], double[]) Display(Laptops[] array)
+        public double Display(Laptops[] array)
         {
             ProductCollection<Laptops> coll = new ProductCollection<Laptops>(array);
             Laptops prod;
@@ -254,7 +364,7 @@ namespace Modul7Finish
                 prise[i] = prod.Prise;
 
             }
-            return (id, prise);
+            return Choise(id, prise);
         }
 
         public override void Read()
@@ -262,6 +372,22 @@ namespace Modul7Finish
             Laptops read = new Laptops();
             Console.WriteLine($" Id:{Id}, \n Name: {Name}, \n Prise: {Prise},\n Monufacturer: " +
                                $"{Monufacturer},\n Weight: {Weight}\n:^)");
+        }
+        public override double Choise(int[] id, double[] prise)
+        {
+            int idProduct = int.Parse(Console.ReadLine());
+            int iArray = -1;
+            int idNum = default;
+            double priseNum = default;
+
+            do
+            {
+                iArray++;
+                idNum = id[iArray];
+                priseNum = prise[iArray];
+            } while (id[iArray] != idProduct && iArray < id.Length);
+            Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
+            return priseNum;
         }
     }
 }

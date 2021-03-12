@@ -153,12 +153,12 @@ namespace Modul7Finish
             //string name;
             int iCicle = 1;
             string[] categories = new string[] { "игры", "материнские платы", "процессоры", "видеокарты", "блоки питaния", "ноутбуки" };
-            Console.WriteLine("Здравствуйте, {0}, выберете категорию, для продолжния пакупки:", name);
+            Console.Write("Здравствуйте, {0}, выберете категорию, для продолжния пакупки: ", name);
             foreach (string a in categories)
             {
                 Console.WriteLine("№ " + iCicle++ + " " + a);
             }
-            Console.WriteLine("наипишите на русском с мальнькой буквы или укажите номер категории");
+            Console.Write("наипишите на русском с мальнькой буквы или укажите номер категории: ");
 
             string str = Console.ReadLine();
             int num;
@@ -173,25 +173,6 @@ namespace Modul7Finish
             {
                 prise = (Order.СhooseCat<string>(str));
             }
-            //Console.Write("введите Id тавара для которое хотите приобрести:");
-            //var prod = (id, prise);
-
-            //T product = prod;
-            //product.Choise(id, prise);
-            //int idProduct = int.Parse(Console.ReadLine());
-            //int iArray = -1;
-            //int idNum = default;
-            //double priseNum = default;
-
-            //do
-            //{
-            //    iArray++;
-            //    idNum = id[iArray];
-            //    priseNum = prise[iArray];
-            //} while (id[iArray] != idProduct && iArray < id.Length);
-
-            //Console.WriteLine("Ваш тавар с id {0} и ценой {1}", idNum, priseNum);
-
             return prise;
         }
         public static void LogicBuy((string Name, string Adress, double Balance, int Age) userDisplay)
@@ -211,7 +192,7 @@ namespace Modul7Finish
                 balance = sum;
                 Console.WriteLine("остаток: " + sum);
 
-                Console.Write("для оканчания покупки напишите 'stop' ");
+                Console.Write("для оканчания покупки напишите 'stop', для продолжнеия нахмите Enter");
                 stoper = Console.ReadLine();
             }
         }

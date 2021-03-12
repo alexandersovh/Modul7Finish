@@ -9,7 +9,7 @@ namespace Modul7Finish
             //Order.DisplayProductAll();
 
             Order.LogicBuy(Order.UserDisplay());
-
+            Console.WriteLine("спасибо за покупку! досвидания");
             Console.ReadLine();
         }
     }

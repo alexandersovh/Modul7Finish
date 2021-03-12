@@ -4,7 +4,17 @@ namespace Modul7Finish
 {
     class Order
     {
-        public int resultAge;
+        public double ResultAge { get; set; }
+
+        //private (string Name, string Adress, double Balance, int Age) ResultDisplay
+        //{
+        //    get 
+        //    {
+        //         (string Name, string Adress, double Balance, int Age) = UserDisplay();
+        //        return (Name, Adress, Balance, Age);
+        //    }
+        //    set { }
+        //}
         public static (string Name, string Adress, double Balance, int Age) UserDisplay()
         {
             Console.WriteLine("здравствуйте вы впервые в магазине (введите да/нет)");
@@ -30,7 +40,7 @@ namespace Modul7Finish
                 do
                 {
                     //Console.Write("неверно указанное число :^(");
-                    
+
                     string ires = Console.ReadLine();
                     bool check = int.TryParse(ires, out num);
                     check1 = check;
@@ -38,13 +48,16 @@ namespace Modul7Finish
 
                 userData = userCollection[num - 1];
                 Order order = new Order();
-                order.resultAge = userData.UserSetData(num - 1).age;
+                order.ResultAge = userData.age;
+
                 return userData.UserSetData(num - 1);
 
             }
             else
             {
+                Order order = new Order();
                 UserWrite userWrite = new UserWrite();
+                order.ResultAge = userWrite.age;
                 return userWrite.WriteSet();
             }
 
@@ -184,13 +197,23 @@ namespace Modul7Finish
         public static void LogicBuy((string Name, string Adress, double Balance, int Age) userDisplay)
         {
             User user = new User();
-            string n = userDisplay.Name;
+            //Order order = new Order();
+            double prise;
+            double sum;
             double balance = userDisplay.Balance;
-            double prise = LogicСhoice(n);
-            double sum = user.LogicBuyUser(prise, balance);
-            Console.WriteLine("остаток: " + sum);
-            Console.WriteLine("спасибо за покупку, досвидани");
+            //double prise = LogicСhoice(userDisplay.Name);
+            string stoper = default;
 
+            while (stoper != "stop")
+            {
+                prise = LogicСhoice(userDisplay.Name);
+                sum = user.LogicBuyUser(prise, balance);
+                balance = sum;
+                Console.WriteLine("остаток: " + sum);
+
+                Console.Write("для оканчания покупки напишите 'stop' ");
+                stoper = Console.ReadLine();
+            }
         }
     }
 }

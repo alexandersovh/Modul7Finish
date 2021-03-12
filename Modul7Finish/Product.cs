@@ -43,7 +43,7 @@ namespace Modul7Finish
             get
             {
                 Order order = new Order();
-                if (ageRating > order.resultAge)
+                if (ageRating > order.ResultAge)
                 {
                     return 0;
                 }

@@ -153,7 +153,7 @@ namespace Modul7Finish
             //string name;
             int iCicle = 1;
             string[] categories = new string[] { "игры", "материнские платы", "процессоры", "видеокарты", "блоки питaния", "ноутбуки" };
-            Console.Write("Здравствуйте, {0}, выберете категорию, для продолжния пакупки: ", name);
+            Console.WriteLine("Здравствуйте, {0}, выберете категорию, для продолжния пакупки: ", name);
             foreach (string a in categories)
             {
                 Console.WriteLine("№ " + iCicle++ + " " + a);
@@ -192,7 +192,7 @@ namespace Modul7Finish
                 balance = sum;
                 Console.WriteLine("остаток: " + sum);
 
-                Console.Write("для оканчания покупки напишите 'stop', для продолжнеия нахмите Enter");
+                Console.Write("для оканчания покупки напишите 'stop', для продолжнеия нахмите Enter: ");
                 stoper = Console.ReadLine();
             }
         }

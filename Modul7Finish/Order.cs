@@ -35,12 +35,11 @@ namespace Modul7Finish
                 }
                 int num = 0;
                 bool check1 = false;
-                Console.Write("укажите ваше № вашего имени: ");
+                
 
                 do
                 {
-                    Console.Write("неверно указанное число :^(");
-
+                    Console.Write("укажите ваше № вашего имени, будьте внимательны: ");
                     string ires = Console.ReadLine();
                     bool check = int.TryParse(ires, out num);
                     check1 = check;
